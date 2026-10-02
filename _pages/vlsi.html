@@ -1,0 +1,17 @@
+---
+layout: archive
+title: "VLSI & Microarchitecture"
+permalink: /vlsi/
+author_profile: true
+---
+
+{% include base_path %}
+
+<p style="margin-top: -10px; margin-bottom: 25px; color: #64748b;">
+  RTL design, cycle-accurate verification, pipelined processor datapaths, and digital logic architectures.
+</p>
+
+{% assign vlsi_projects = site.portfolio | where: "type", "vlsi" | sort: 'date' | reverse %}
+{% for post in vlsi_projects %}
+  {% include archive-single.html %}
+{% endfor %}
