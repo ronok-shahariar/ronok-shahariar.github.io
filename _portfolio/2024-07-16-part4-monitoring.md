@@ -60,97 +60,97 @@ in real time.
 # End-to-End System Architecture
 
 ```mermaid
-flowchart LR
+flowchart TD
 
-    SAT["Satellite Data"]
+    subgraph EDGE["RF / Edge Ingress"]
+        direction TB
+        SAT["Satellite Data"]
+        SDR["4× Flex Compute SDRs<br/>FPGA Preprocessing"]
+        SAT --> SDR
+    end
 
-    SDR["4× Flex Compute SDRs<br/>FPGA Preprocessing"]
+    subgraph SERVER1["Server 1 Processing"]
+        direction TB
+        S1["Server 1<br/>100 Gbps DPDK Ingress"]
+        REDUCE["Filtering / DSP<br/>Data Reduction"]
+        S1 --> REDUCE
+    end
 
-    S1["Server 1<br/>100 Gbps DPDK Ingress"]
+    subgraph SERVER2["Server 2 Processing"]
+        direction TB
+        S2["Server 2<br/>DPDK + Advanced DSP<br/>Anomaly Detection"]
+        SHM["POSIX Shared Memory"]
+        SECONDARY["Secondary DPDK<br/>Telemetry Process"]
+        S2 -->|"DSP Results / KPIs"| SHM
+        SHM --> SECONDARY
+    end
 
-    REDUCE["Filtering / DSP<br/>Data Reduction"]
+    subgraph MONITORING["Telemetry & Monitoring"]
+        direction TB
+        GRPC["gRPC Service"]
+        EXPORTER["Custom Prometheus<br/>Exporter"]
+        PROM["Prometheus"]
+        GRAFANA["Grafana Dashboards"]
+        GRPC --> EXPORTER
+        EXPORTER --> PROM
+        PROM --> GRAFANA
+    end
 
-    S2["Server 2<br/>DPDK + Advanced DSP<br/>Anomaly Detection"]
-
-    SHM["POSIX Shared Memory"]
-
-    SECONDARY["Secondary DPDK<br/>Telemetry Process"]
-
-    GRPC["gRPC Service"]
-
-    EXPORTER["Custom Prometheus<br/>Exporter"]
-
-    PROM["Prometheus"]
-
-    GRAFANA["Grafana Dashboards"]
-
-    SAT --> SDR
-
-    SDR -->|High-Speed RF Data| S1
-
-    S1 --> REDUCE
-
-    REDUCE -->|Refined ~10 Gbps Stream| S2
-
-    S2 -->|DSP Results / KPIs| SHM
-
-    SHM --> SECONDARY
-
+    SDR -->|"High-Speed RF Data"| S1
+    REDUCE -->|"Refined ~10 Gbps Stream"| S2
     SECONDARY --> GRPC
-
-    GRPC --> EXPORTER
-
-    EXPORTER --> PROM
-
-    PROM --> GRAFANA
 ```
 
 ---
 
 # Data Journey: Satellite to Dashboard
 
-```text
-Satellite Signal
-       |
-       v
-4× Flex Compute SDRs
-       |
-       | FPGA Processing
-       v
-Server 1
-100 Gbps DPDK Ingress
-       |
-       | Filtering / Initial DSP
-       v
-Data Reduction
-100 Gbps → ~10 Gbps
-       |
-       v
-Server 2
-Advanced DPDK + DSP
-       |
-       | Anomaly Detection
-       | Parameter Extraction
-       v
-POSIX Shared Memory
-       |
-       v
-Secondary DPDK Process
-       |
-       v
-gRPC Telemetry Service
-       |
-       v
-Prometheus Exporter
-       |
-       v
-Prometheus
-       |
-       v
-Grafana
-       |
-       v
-Real-Time Operational Visibility
+```mermaid
+flowchart TD
+
+    subgraph EDGE["RF Signal Acquisition"]
+        direction TB
+        A["Satellite Signal"]
+        B["4× Flex Compute SDRs<br/>FPGA Processing"]
+        A --> B
+    end
+
+    subgraph SERVER1["Server 1 — High-Speed Ingress"]
+        direction TB
+        C["Server 1<br/>100 Gbps DPDK Ingress"]
+        D["Filtering / Initial DSP"]
+        E["Data Reduction<br/>100 Gbps → ~10 Gbps"]
+        C --> D
+        D --> E
+    end
+
+    subgraph SERVER2["Server 2 — Advanced Processing"]
+        direction TB
+        F["Server 2<br/>Advanced DPDK + DSP"]
+        G["Anomaly Detection<br/>Parameter Extraction"]
+        H["POSIX Shared Memory"]
+        I["Secondary DPDK Process"]
+        F --> G
+        G --> H
+        H --> I
+    end
+
+    subgraph TELEMETRY["Telemetry & Monitoring"]
+        direction TB
+        J["gRPC Telemetry Service"]
+        K["Prometheus Exporter"]
+        L["Prometheus"]
+        M["Grafana"]
+        N["Real-Time Operational Visibility"]
+        J --> K
+        K --> L
+        L --> M
+        M --> N
+    end
+
+    B --> C
+    E --> F
+    I --> J
 ```
 
 ---
@@ -304,30 +304,15 @@ DSP and anomaly metrics.
 
 ## Dual Telemetry Sources
 
-```text
-                  +----------------------+
-                  |    DSP / Anomaly     |
-                  |      Processing      |
-                  +----------+-----------+
-                             |
-                          gRPC API
-                             |
-                             v
-                     +---------------+
-                     |               |
-                     |   Prometheus  |
-                     |    Exporter   |
-                     |               |
-                     +-------+-------+
-                             ^
-                             |
-                    DPDK Telemetry
-                             |
-                  +----------+-----------+
-                  |    DPDK Runtime      |
-                  | NIC / Packet / Port  |
-                  |      Statistics      |
-                  +----------------------+
+```mermaid
+flowchart TD
+
+    DSP["DSP / Anomaly<br/>Processing"]
+    EXPORTER["Prometheus<br/>Exporter"]
+    DPDK["DPDK Runtime<br/>NIC / Packet / Port<br/>Statistics"]
+
+    DSP -->|"gRPC API"| EXPORTER
+    DPDK -->|"DPDK Telemetry"| EXPORTER
 ```
 
 This gives operators visibility into both:
@@ -421,33 +406,28 @@ Typical dashboard views can include:
 
 ## Visualization Pipeline
 
-```text
-Raw DPDK Counters
-        +
-DSP / Anomaly Metrics
-        |
-        v
-Custom Exporter
-        |
-        v
-Prometheus
-Time-Series Metrics
-        |
-        v
-PromQL Queries
-        |
-        v
-Grafana Panels
-        |
-        +------------------------+
-        |                        |
-        v                        v
- Current System State       Historical Trends
-        |                        |
-        +-----------+------------+
-                    |
-                    v
-              Operator Insight
+```mermaid
+flowchart TD
+
+    A["Raw DPDK Counters"]
+    B["DSP / Anomaly Metrics"]
+    C["Custom Exporter"]
+    D["Prometheus<br/>Time-Series Metrics"]
+    E["PromQL Queries"]
+    F["Grafana Panels"]
+    G["Current System State"]
+    H["Historical Trends"]
+    I["Operator Insight"]
+
+    A --> C
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    F --> H
+    G --> I
+    H --> I
 ```
 
 ---
@@ -501,37 +481,38 @@ The observability pipeline allows these results to move from the processing
 engine to remote visualization.
 
 ```mermaid
-flowchart LR
+flowchart TD
 
-    INPUT["Reduced Satellite Data"]
+    subgraph PROCESSING["Signal Processing"]
+        direction LR
+        INPUT["Reduced Satellite Data"]
+        DSP["Advanced DSP"]
+        DETECT["Anomaly Detection"]
 
-    DSP["Advanced DSP"]
+        INPUT --> DSP
+        DSP --> DETECT
+    end
 
-    DETECT["Anomaly Detection"]
+    subgraph TELEMETRY["Telemetry Interface"]
+        direction LR
+        SHM["Shared Memory"]
+        GRPC["gRPC"]
 
-    SHM["Shared Memory"]
+        SHM --> GRPC
+    end
 
-    GRPC["gRPC"]
+    subgraph MONITORING["Monitoring Pipeline"]
+        direction LR
+        EXPORT["Exporter"]
+        PROM["Prometheus"]
+        DASH["Grafana"]
 
-    EXPORT["Exporter"]
-
-    PROM["Prometheus"]
-
-    DASH["Grafana"]
-
-    INPUT --> DSP
-
-    DSP --> DETECT
+        EXPORT --> PROM
+        PROM --> DASH
+    end
 
     DETECT --> SHM
-
-    SHM --> GRPC
-
     GRPC --> EXPORT
-
-    EXPORT --> PROM
-
-    PROM --> DASH
 ```
 
 This creates a direct operational path from **signal intelligence** to
@@ -568,35 +549,32 @@ dashboard or monitoring requests.
 The telemetry infrastructure is designed to run alongside the main processing
 pipeline.
 
-```text
-Foreground Processing
----------------------
+```mermaid
+flowchart TD
 
-Satellite Data
-      |
-      v
-DPDK + DSP
-      |
-      v
-Anomaly Detection
+    subgraph FOREGROUND["Foreground Processing"]
+        direction TB
+        A["Satellite Data"]
+        B["DPDK + DSP"]
+        C["Anomaly Detection"]
 
+        A --> B
+        B --> C
+    end
 
-Background Observability
-------------------------
+    subgraph OBSERVABILITY["Background Observability"]
+        direction TB
+        D["Secondary Process"]
+        E["gRPC Server"]
+        F["Prometheus Exporter"]
+        G["Prometheus"]
+        H["Grafana"]
 
-Secondary Process
-      |
-      v
-gRPC Server
-      |
-      v
-Prometheus Exporter
-      |
-      v
-Prometheus
-      |
-      v
-Grafana
+        D --> E
+        E --> F
+        F --> G
+        G --> H
+    end
 ```
 
 This clean separation makes the architecture easier to operate and debug.
@@ -653,36 +631,25 @@ Grafana presents live dashboards and operational trends.
 
 Each part of the monitoring chain can be tested independently.
 
-```text
-DPDK / DSP
-    |
-    | Verify processed results
-    v
-Shared Memory
-    |
-    | Verify secondary access
-    v
-Secondary Process
-    |
-    | Verify telemetry output
-    v
-gRPC
-    |
-    | Test API calls
-    v
-Prometheus Exporter
-    |
-    | Verify exported metrics
-    v
-Prometheus
-    |
-    | Query stored metrics
-    v
-Grafana
-    |
-    | Validate dashboards
-    v
-Complete Observability Pipeline
+```mermaid
+flowchart TD
+
+    A["DPDK / DSP"]
+    B["Shared Memory"]
+    C["Secondary Process"]
+    D["gRPC"]
+    E["Prometheus Exporter"]
+    F["Prometheus"]
+    G["Grafana"]
+    H["Complete Observability Pipeline"]
+
+    A -->|"Verify processed results"| B
+    B -->|"Verify secondary access"| C
+    C -->|"Verify telemetry output"| D
+    D -->|"Test API calls"| E
+    E -->|"Verify exported metrics"| F
+    F -->|"Query stored metrics"| G
+    G -->|"Validate dashboards"| H
 ```
 
 This staged architecture makes troubleshooting significantly easier because
@@ -800,63 +767,31 @@ independently collected, transformed, stored, and visualized.
 
 # Final Observability Pipeline
 
-```text
-                 SATELLITE DATA
-                       |
-                       v
-          +--------------------------+
-          | 4× Flex Compute SDRs     |
-          | FPGA Preprocessing       |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | Server 1                 |
-          | 100 Gbps DPDK Ingress    |
-          +------------+-------------+
-                       |
-                 Data Reduction
-                       |
-                 ~10 Gbps Output
-                       |
-                       v
-          +--------------------------+
-          | Server 2                 |
-          | Advanced DSP + Anomaly   |
-          | Detection                |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | POSIX Shared Memory      |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | Secondary DPDK Process   |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | gRPC Telemetry Service   |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | Prometheus Exporter      |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | Prometheus               |
-          | Time-Series Monitoring   |
-          +------------+-------------+
-                       |
-                       v
-          +--------------------------+
-          | Grafana                  |
-          | Dashboards & Analysis    |
-          +--------------------------+
+```mermaid
+flowchart TD
+
+    A["SATELLITE DATA"]
+    B["4× Flex Compute SDRs<br/>FPGA Preprocessing"]
+    C["Server 1<br/>100 Gbps DPDK Ingress"]
+    D["Data Reduction<br/>~10 Gbps Output"]
+    E["Server 2<br/>Advanced DSP + Anomaly Detection"]
+    F["POSIX Shared Memory"]
+    G["Secondary DPDK Process"]
+    H["gRPC Telemetry Service"]
+    I["Prometheus Exporter"]
+    J["Prometheus<br/>Time-Series Monitoring"]
+    K["Grafana<br/>Dashboards & Analysis"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
+    G --> H
+    H --> I
+    I --> J
+    J --> K
 ```
 
 ---

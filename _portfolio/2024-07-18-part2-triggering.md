@@ -89,22 +89,99 @@ The same SCPI commands available to LabVIEW can be used for:
 
 ### YAML-Based Command Mapping
 
-SCPI commands are mapped to corresponding gRPC methods through configurable **YAML definitions**.
+<p>
+  SCPI commands are mapped to corresponding gRPC methods through configurable <strong>YAML definitions</strong>.
+  This keeps the external instrument command interface separate from the backend API.
+</p>
 
-This separates the external instrument command interface from the backend API.
+<div style="
+  display:flex;
+  flex-wrap:wrap;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
 
-```text
-SCPI Command
-     |
-     v
-YAML Mapping
-     |
-     v
-gRPC Method
-     |
-     v
-RF Backend
-```
+  <div style="
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    padding:14px 16px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI Command</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Instrument Interface
+    </div>
+  </div>
+
+  <div style="font-size:1.25em; opacity:0.65;">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+
+  <div style="
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    padding:14px 16px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">YAML Mapping</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Command Translation
+    </div>
+  </div>
+
+  <div style="font-size:1.25em; opacity:0.65;">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+
+  <div style="
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    padding:14px 16px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">gRPC Method</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Backend API Call
+    </div>
+  </div>
+
+  <div style="font-size:1.25em; opacity:0.65;">
+    <i class="fas fa-arrow-right"></i>
+  </div>
+
+  <div style="
+    flex:1;
+    min-width:150px;
+    text-align:center;
+    padding:14px 16px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">RF Backend</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Hardware Control
+    </div>
+  </div>
+
+</div>
+
 
 This approach makes the bridge easier to extend because command mappings can be modified without tightly coupling client applications to backend implementation details.
 
@@ -179,58 +256,173 @@ flowchart TB
     VISA --> CLIENT
 ```
 
-### Simplified Request Path
+### Simplified Request & Response Path
 
-```text
-LabVIEW / NI MAX / PyVISA
-            |
-            v
-       VISA TCP/IP
-            |
-            v
-   Client Socket Bridge
-            |
-            v
-       SCPI Parser
-            |
-            v
-      YAML Mapping
-            |
-            v
-    gRPC Wrapper Bridge
-            |
-            v
-     gRPC / Protobuf
-            |
-            v
-   RThost / FlexSDR
-       RF Controller
-```
+<p style="margin-bottom:16px;">
+  Commands travel from the instrument-control client to the RF backend, while responses return through the same layers in reverse.
+</p>
 
-### Response Path
+<div style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
 
-```text
-RThost / FlexSDR
-       RF Controller
-            |
-            v
-      gRPC Response
-            |
-            v
-    gRPC Wrapper Bridge
-            |
-            v
-   SCPI-Formatted Response
-            |
-            v
-   Client Socket Bridge
-            |
-            v
-       VISA TCP/IP
-            |
-            v
-LabVIEW / NI MAX / PyVISA
-```
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">LabVIEW / NI MAX / PyVISA</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Test &amp; Instrument Control Clients
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65; text-align:center;">
+    <i class="fas fa-arrow-down"></i>
+    <span style="font-size:0.78em; margin:0 8px;">Request</span>
+    <i class="fas fa-arrow-up"></i>
+    <span style="font-size:0.78em; margin-left:8px;">Response</span>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">VISA TCP/IP</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Network Transport Layer
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65;">
+    <i class="fas fa-arrows-alt-v"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Client Socket Bridge</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      TCP Connection &amp; Message Handling
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65;">
+    <i class="fas fa-arrows-alt-v"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI Parser / Formatter</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Command Parsing &amp; Response Formatting
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65;">
+    <i class="fas fa-arrows-alt-v"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">YAML Mapping</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      SCPI-to-gRPC Command Mapping
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65;">
+    <i class="fas fa-arrows-alt-v"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">gRPC Wrapper Bridge</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      API Translation Layer
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65;">
+    <i class="fas fa-arrows-alt-v"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">gRPC / Protobuf</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Remote Procedure Call Interface
+    </div>
+  </div>
+
+  <div style="font-size:1.05em; opacity:0.65;">
+    <i class="fas fa-arrows-alt-v"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">RThost / FlexSDR RF Controller</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      RF Hardware Control Backend
+    </div>
+  </div>
+
+</div>
 
 ---
 
@@ -262,31 +454,149 @@ Backend addresses and ports can be configured independently, allowing the same b
 
 ## Round-Trip Performance Monitoring
 
-The bridge records timing information for command transactions.
+<p>
+  The bridge records timing information for each command transaction, allowing end-to-end response latency to be measured across the complete SCPI-to-gRPC processing path.
+</p>
 
-A typical transaction follows:
+<div style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
 
-```text
-Command Received
-      |
-      v
-SCPI Processing
-      |
-      v
-gRPC Request
-      |
-      v
-Backend Processing
-      |
-      v
-gRPC Response
-      |
-      v
-SCPI Response
-      |
-      v
-Round-Trip Time Logged
-```
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Command Received</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Transaction Timer Starts
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI Processing</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Parse, Validate &amp; Map Command
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">gRPC Request</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Request Forwarded to Backend
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Backend Processing</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      RF Controller Executes Operation
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">gRPC Response</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Backend Result Returned
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI Response</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Result Converted to Instrument Format
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Round-Trip Time Logged</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      End-to-End Transaction Latency Recorded
+    </div>
+  </div>
+
+</div>
 
 The logging system can record:
 
@@ -321,47 +631,199 @@ These mechanisms improve stability when the bridge is used in laboratory and aut
 
 ## Bidirectional RF Control
 
-The architecture was validated for both **read** and **write** operations.
+<p>
+  The architecture supports both <strong>read</strong> and <strong>write</strong> operations, allowing external applications to query live RF parameters and update device configuration through the same SCPI-to-gRPC bridge.
+</p>
 
 ### Query Path
 
-```text
-LabVIEW
-   |
-   |  SCPI Query
-   v
-Bridge
-   |
-   |  gRPC Request
-   v
-RF Controller
-   |
-   |  Current Device Value
-   v
-Bridge
-   |
-   |  SCPI Response
-   v
-LabVIEW
-```
+<div style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">LabVIEW</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Sends SCPI Query
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI / gRPC Bridge</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Translates Query to gRPC Request
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">RF Controller</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Reads Current Device Value
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI / gRPC Bridge</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Converts Device Value to SCPI Response
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-up"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">LabVIEW</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Receives Current RF Parameter
+    </div>
+  </div>
+
+</div>
+
 
 ### Configuration Path
 
-```text
-LabVIEW
-   |
-   |  SCPI Configuration Command
-   v
-Bridge
-   |
-   |  gRPC Set Request
-   v
-RF Controller
-   |
-   |  Device Parameter Updated
-   v
-Success Response
-```
+<div style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">LabVIEW</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Sends SCPI Configuration Command
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">SCPI / gRPC Bridge</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Translates Command to gRPC Set Request
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">RF Controller</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Updates Device Parameter
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Success Response</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Configuration Update Confirmed
+    </div>
+  </div>
+
+</div>
 
 Validation demonstrated operations including:
 

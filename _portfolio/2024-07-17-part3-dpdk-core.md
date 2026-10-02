@@ -76,16 +76,69 @@ Instead of allowing monitoring applications to directly access the packet
 processing logic, the primary process writes the information required for
 telemetry into shared memory.
 
-```text
-High-Speed Packet Processing
-          |
-          v
-   Primary DPDK Process
-          |
-          | Update KPIs
-          v
-   Shared Telemetry Region
-```
+<div style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">High-Speed Packet Processing</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Real-Time Data Plane Workload
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Primary DPDK Process</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Processes Packets and Updates KPIs
+    </div>
+  </div>
+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%, 520px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Shared Telemetry Region</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Exposes Runtime Performance Metrics
+    </div>
+  </div>
+
+</div>
 
 This keeps monitoring activity separated from the critical processing path.
 
@@ -178,25 +231,20 @@ The system solves this using a lightweight **sequence lock**.
 
 The reader first checks the sequence number.
 
-```text
-Read Sequence Number
-        |
-        v
-Is Sequence Odd?
-   /          \
- Yes           No
-  |             |
-Writer Active   Copy Telemetry
-  |             |
-Retry           v
-           Read Sequence Again
-                  |
-                  v
-        Sequence Unchanged?
-             /        \
-           Yes         No
-            |           |
-       Valid Data     Retry
+```mermaid
+flowchart TD
+    A[Read Sequence Number] --> B{Is Sequence Odd?}
+
+    B -- Yes --> C[Writer Active]
+    C --> D[Retry]
+    D --> A
+
+    B -- No --> E[Copy Telemetry]
+    E --> F[Read Sequence Again]
+    F --> G{Sequence Unchanged?}
+
+    G -- Yes --> H[Valid Data]
+    G -- No --> D
 ```
 
 A successful telemetry read requires:
@@ -333,55 +381,30 @@ Two primary access patterns are supported.
 
 Returns the current telemetry snapshot on demand.
 
-```text
-Client
-   |
-   | PollTelemetry()
-   v
-gRPC Server
-   |
-   | poll_telemetry
-   v
-UNIX Socket
-   |
-   v
-Secondary DPDK Process
-   |
-   v
-Shared Memory
-   |
-   v
-TelemetrySnapshot
-   |
-   v
-Client
+```mermaid
+flowchart TD
+    A["Client"] --> B["gRPC Server"]
+    B --> C["UNIX Socket"]
+    C --> D["Secondary DPDK Process"]
+    D --> E["Shared Memory"]
+    E --> F["TelemetrySnapshot"]
+    F --> G["Client"]
 ```
 
 ### StreamTelemetry
 
 Provides continuously updated telemetry to a connected client.
 
-```text
-gRPC Client
-     |
-     | StreamTelemetry()
-     v
-gRPC Server
-     |
-     v
-Read Latest Telemetry
-     |
-     v
-Check Sequence Number
-     |
-     v
-New Snapshot Available?
-     |
-     v
-Send TelemetrySnapshot
-     |
-     v
-Repeat
+```mermaid
+flowchart TD
+    A["gRPC Client"] --> B["gRPC Server"]
+    B --> C["Read Latest Telemetry"]
+    C --> D["Check Sequence Number"]
+    D --> E{"New Snapshot Available?"}
+    E -->|Yes| F["Send TelemetrySnapshot"]
+    F --> C
+    E -->|No| G["Wait and Retry"]
+    G --> C
 ```
 
 ---
@@ -389,63 +412,45 @@ Repeat
 # Complete Control & Data Flow
 
 ```mermaid
-flowchart LR
+flowchart TD
 
     subgraph FASTPATH["High-Speed DPDK Fast Path"]
-
+        direction LR
         PACKETS["Network Traffic"]
-
         PRIMARY["Primary DPDK Process"]
-
+        PACKETS --> PRIMARY
     end
 
     subgraph IPC["Telemetry IPC"]
-
-        SHM["POSIX Shared Memory<br/>/dpdk_kpi_shm"]
-
+        direction LR
         SEQ["Sequence Lock<br/>update_seq"]
-
+        SHM["POSIX Shared Memory<br/>/dpdk_kpi_shm"]
+        SEQ --> SHM
     end
 
     subgraph TELEMETRY["Telemetry Plane"]
-
+        direction LR
         SECONDARY["Secondary DPDK Process"]
-
         SOCKET["UNIX Domain Socket<br/>/tmp/dpdk_kpi.sock"]
-
+        SECONDARY --> SOCKET
     end
 
     subgraph API["Remote Interface"]
-
+        direction LR
         GRPC["gRPC Server"]
-
         CLIENT["gRPC Client"]
-
         MONITOR["Monitoring / Analytics"]
-
+        GRPC --> CLIENT
+        CLIENT --> MONITOR
     end
 
-    PACKETS --> PRIMARY
-
-    PRIMARY -->|Update KPIs| SHM
-
-    PRIMARY -->|Update Sequence| SEQ
-
-    SEQ --> SHM
-
-    SHM -->|Consistent Snapshot| SECONDARY
-
-    SECONDARY -->|Formatted Telemetry| SOCKET
-
+    PRIMARY -->|"Update KPIs"| SHM
+    PRIMARY -->|"Update Sequence"| SEQ
+    SHM -->|"Consistent Snapshot"| SECONDARY
+    SOCKET -->|"Telemetry Data"| GRPC
     GRPC -->|"poll_telemetry"| SOCKET
-
-    SOCKET -->|Telemetry Data| GRPC
-
-    GRPC -->|PollTelemetry| CLIENT
-
-    GRPC -->|StreamTelemetry| CLIENT
-
-    CLIENT --> MONITOR
+    GRPC -->|"PollTelemetry"| CLIENT
+    GRPC -->|"StreamTelemetry"| CLIENT
 ```
 
 ---
@@ -454,36 +459,25 @@ flowchart LR
 
 The complete telemetry pipeline can be summarized as:
 
-```text
-High-Speed Network Traffic
-            |
-            v
-    Primary DPDK Process
-            |
-            | KPI / Statistics Update
-            v
-     POSIX Shared Memory
-      /dpdk_kpi_shm
-            |
-            | Seqlock-Protected Read
-            v
-   Secondary DPDK Process
-            |
-            | Formatted Telemetry
-            v
-     UNIX Domain Socket
-     /tmp/dpdk_kpi.sock
-            |
-            | poll_telemetry
-            v
-        gRPC Server
-            |
-            | Protobuf
-            v
-        gRPC Client
-            |
-            v
- Monitoring / Analytics
+```mermaid
+flowchart TD
+
+    A["High-Speed Network Traffic"]
+    B["Primary DPDK Process"]
+    C["POSIX Shared Memory<br/>/dpdk_kpi_shm"]
+    D["Secondary DPDK Process"]
+    E["UNIX Domain Socket<br/>/tmp/dpdk_kpi.sock"]
+    F["gRPC Server"]
+    G["gRPC Client"]
+    H["Monitoring / Analytics"]
+
+    A --> B
+    B -->|"KPI / Statistics Update"| C
+    C -->|"Seqlock-Protected Read"| D
+    D -->|"Formatted Telemetry"| E
+    E -->|"poll_telemetry"| F
+    F -->|"Protobuf"| G
+    G --> H
 ```
 
 ---
@@ -624,21 +618,17 @@ information without direct access to the primary process.
 
 The system consists of four logical runtime components.
 
-```text
-Terminal 1
-Primary DPDK Process
-        |
-        v
-Terminal 2
-Secondary Telemetry Server
-        |
-        v
-Terminal 3
-gRPC Server
-        |
-        v
-Terminal 4
-gRPC Client / CLI
+```mermaid
+flowchart TD
+
+    A["Terminal 1<br/>Primary DPDK Process"]
+    B["Terminal 2<br/>Secondary Telemetry Server"]
+    C["Terminal 3<br/>gRPC Server"]
+    D["Terminal 4<br/>gRPC Client / CLI"]
+
+    A --> B
+    B --> C
+    C --> D
 ```
 
 Typical startup order:
@@ -687,49 +677,21 @@ monitoring and control applications.
 
 ## Final Architecture Summary
 
-```text
-                    HIGH-SPEED DATA PLANE
-                            |
-                            v
-                  +--------------------+
-                  | Primary DPDK       |
-                  | Packet Processing  |
-                  +---------+----------+
-                            |
-                      Telemetry Write
-                            |
-                            v
-                  +--------------------+
-                  | POSIX Shared Memory|
-                  | /dpdk_kpi_shm      |
-                  +---------+----------+
-                            |
-                     Seqlock Read
-                            |
-                            v
-                  +--------------------+
-                  | Secondary DPDK     |
-                  | Telemetry Process  |
-                  +---------+----------+
-                            |
-                      UNIX Socket
-                            |
-                            v
-                  +--------------------+
-                  | /tmp/dpdk_kpi.sock |
-                  +---------+----------+
-                            |
-                            v
-                  +--------------------+
-                  | gRPC Server        |
-                  | Poll / Stream      |
-                  +---------+----------+
-                            |
-                          Protobuf
-                            |
-                            v
-                  +--------------------+
-                  | Remote Clients /   |
-                  | Monitoring Systems |
-                  +--------------------+
+```mermaid
+flowchart TD
+
+    A["HIGH-SPEED DATA PLANE"]
+    B["Primary DPDK<br/>Packet Processing"]
+    C["POSIX Shared Memory<br/>/dpdk_kpi_shm"]
+    D["Secondary DPDK<br/>Telemetry Process"]
+    E["UNIX Domain Socket<br/>/tmp/dpdk_kpi.sock"]
+    F["gRPC Server<br/>Poll / Stream"]
+    G["Remote Clients /<br/>Monitoring Systems"]
+
+    A --> B
+    B -->|"Telemetry Write"| C
+    C -->|"Seqlock Read"| D
+    D -->|"UNIX Socket"| E
+    E --> F
+    F -->|"Protobuf"| G
 ```

@@ -61,37 +61,38 @@ verification**, and **system-level performance benchmarking**.
 # End-to-End Validation Workflow
 
 ```mermaid
-flowchart LR
+flowchart TD
 
-    INPUT["Satellite / Test Data"]
+    subgraph ACQUISITION["Data Acquisition"]
+        direction TB
+        INPUT["Satellite / Test Data"]
+        CAPTURE["High-Speed Capture"]
+        STORAGE["Recorded Dataset"]
 
-    CAPTURE["High-Speed Capture"]
+        INPUT --> CAPTURE
+        CAPTURE --> STORAGE
+    end
 
-    STORAGE["Recorded Dataset"]
+    subgraph REPLAY["Playback & Loopback"]
+        direction TB
+        PLAYBACK["Playback Engine"]
+        LOOP["Isolated Loopback Link"]
 
-    PLAYBACK["Playback Engine"]
+        PLAYBACK --> LOOP
+    end
 
-    LOOP["Isolated Loopback Link"]
+    subgraph VALIDATION["Validation"]
+        direction TB
+        VERIFY["Integrity Verification"]
+        ANOMALY["Anomaly Screening"]
+        RESULT["Validation Results"]
 
-    VERIFY["Integrity Verification"]
-
-    ANOMALY["Anomaly Screening"]
-
-    RESULT["Validation Results"]
-
-    INPUT --> CAPTURE
-
-    CAPTURE --> STORAGE
+        VERIFY --> ANOMALY
+        ANOMALY --> RESULT
+    end
 
     STORAGE --> PLAYBACK
-
-    PLAYBACK --> LOOP
-
     LOOP --> VERIFY
-
-    VERIFY --> ANOMALY
-
-    ANOMALY --> RESULT
 ```
 
 The replay path provides a controlled method for comparing captured data against
@@ -182,20 +183,19 @@ This makes the validation process reproducible.
 
 ## Record Phase
 
-```text
-Incoming Satellite / Test Stream
-              |
-              v
-       Capture Interface
-              |
-              v
-      High-Speed Ingestion
-              |
-              v
-       Packet Recording
-              |
-              v
-    Non-Volatile Storage
+```mermaid
+flowchart TD
+
+    A["Incoming Satellite / Test Stream"]
+    B["Capture Interface"]
+    C["High-Speed Ingestion"]
+    D["Packet Recording"]
+    E["Non-Volatile Storage"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
 ```
 
 The recorded dataset becomes a deterministic test source for later validation.
@@ -204,61 +204,59 @@ The recorded dataset becomes a deterministic test source for later validation.
 
 ## Playback Phase
 
-```text
-Recorded Dataset
-       |
-       v
-Playback Engine
-       |
-       v
-High-Speed Network Output
-       |
-       v
-Isolated Verification Link
-       |
-       v
-Validation Server
+```mermaid
+flowchart TD
+
+    A["Recorded Dataset"]
+    B["Playback Engine"]
+    C["High-Speed Network Output"]
+    D["Isolated Verification Link"]
+    E["Validation Server"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
 ```
 
-The isolated link allows the replay stream to be evaluated independently from
-the original acquisition path.
+The isolated link allows the replay stream to be evaluated independently from the original acquisition path.
 
 ---
-
 # Complete Record / Playback Loop
 
 ```mermaid
-flowchart LR
+flowchart TD
 
-    SOURCE["Satellite / Test Source"]
+    subgraph CAPTURE["Capture Phase"]
+        direction TB
+        SOURCE["Satellite / Test Source"]
+        RX["Capture Server"]
+        DISK["Recorded Data"]
 
-    RX["Capture Server"]
+        SOURCE -->|"Capture"| RX
+        RX -->|"Record"| DISK
+    end
 
-    DISK["Recorded Data"]
+    subgraph PLAYBACK["Playback Phase"]
+        direction TB
+        TX["Playback Engine"]
+        LINK["Isolated Network Link"]
 
-    TX["Playback Engine"]
+        TX -->|"Replay"| LINK
+    end
 
-    LINK["Isolated Network Link"]
+    subgraph VALIDATION["Validation Phase"]
+        direction TB
+        VALIDATOR["Validation Server"]
+        CHECK["Sequence / Integrity Check"]
+        REPORT["Verification Report"]
 
-    VALIDATOR["Validation Server"]
+        VALIDATOR --> CHECK
+        CHECK --> REPORT
+    end
 
-    CHECK["Sequence / Integrity Check"]
-
-    REPORT["Verification Report"]
-
-    SOURCE -->|Capture| RX
-
-    RX -->|Record| DISK
-
-    DISK -->|Read| TX
-
-    TX -->|Replay| LINK
-
+    DISK -->|"Read"| TX
     LINK --> VALIDATOR
-
-    VALIDATOR --> CHECK
-
-    CHECK --> REPORT
 ```
 
 This creates a repeatable verification bench for validating data-path behavior
@@ -284,30 +282,25 @@ Typical sequence validation checks include:
 
 ## Sequence Audit Logic
 
-```text
-Receive Packet
-     |
-     v
-Read Sequence Number
-     |
-     v
-Compare With Expected Sequence
-     |
-     +--------------------+
-     |                    |
-     v                    v
- Expected             Unexpected
-     |                    |
-     v                    v
-Continue            Record Anomaly
-     |                    |
-     +---------+----------+
-               |
-               v
-       Update Expected Seq
-               |
-               v
-         Process Next Packet
+```mermaid
+flowchart TD
+
+    A["Receive Packet"]
+    B["Read Sequence Number"]
+    C{"Sequence Matches Expected?"}
+    D["Continue"]
+    E["Record Anomaly"]
+    F["Update Expected Sequence"]
+    G["Process Next Packet"]
+
+    A --> B
+    B --> C
+    C -->|"Yes"| D
+    C -->|"No"| E
+    D --> F
+    E --> F
+    F --> G
+    G --> A
 ```
 
 The sequence audit provides a direct method for identifying packet-loss or
@@ -382,14 +375,17 @@ VTune provides visibility into **how the CPU is executing the workload**.
 
 This helps separate two different validation questions:
 
-```text
-Packet Validation
-        |
-        +----> Is the data path correct?
+```mermaid
+flowchart TD
 
-Performance Profiling
-        |
-        +----> Is the processing path efficient?
+    A["Packet Validation"]
+    B["Is the data path correct?"]
+
+    C["Performance Profiling"]
+    D["Is the processing path efficient?"]
+
+    A --> B
+    C --> D
 ```
 
 ---
@@ -510,25 +506,21 @@ including:
 
 # Packet Validation Scale
 
-```text
-Small Validation Run
-      98,304 packets
-            |
-            v
-     Functional Check
-            |
-            v
-   Increasing Test Load
-            |
-            v
-   Sustained Stress Test
-            |
-            v
-    Hundreds of Millions
-       of Packets
-            |
-            v
-  859,314,436 packets
+```mermaid
+flowchart TD
+
+    A["Small Validation Run<br/>98,304 packets"]
+    B["Functional Check"]
+    C["Increasing Test Load"]
+    D["Sustained Stress Test"]
+    E["Hundreds of Millions<br/>of Packets"]
+    F["859,314,436 packets"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
 ```
 
 The purpose of increasing packet volume is to expose issues that may not appear
@@ -549,26 +541,23 @@ for the documented test configurations.
 This result is significant because packet-loss problems may be introduced by
 several parts of a high-speed system:
 
-```text
-NIC Receive
-    |
-    v
-DPDK Processing
-    |
-    v
-Buffer Management
-    |
-    v
-Storage
-    |
-    v
-Playback
-    |
-    v
-Network Replay
-    |
-    v
-Validation Receiver
+```mermaid
+flowchart TD
+
+    A["NIC Receive"]
+    B["DPDK Processing"]
+    C["Buffer Management"]
+    D["Storage"]
+    E["Playback"]
+    F["Network Replay"]
+    G["Validation Receiver"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
+    E --> F
+    F --> G
 ```
 
 The validation workflow therefore evaluates the complete operational path rather
@@ -720,44 +709,29 @@ flowchart TD
 
 The architecture can be validated independently at each stage.
 
-```text
-RF / Test Source
-      |
-      | Verify Input
-      v
-Capture Interface
-      |
-      | Verify RX Counters
-      v
-DPDK Processing
-      |
-      | Verify Processing Stability
-      | Profile with Intel VTune
-      v
-Storage
-      |
-      | Verify Recorded Dataset
-      v
-Playback Engine
-      |
-      | Verify TX Counters
-      v
-Validation Link
-      |
-      | Verify Transport
-      v
-Receiver
-      |
-      | Verify Packet Count
-      v
-Sequence Audit
-      |
-      | Verify Continuity
-      v
-Anomaly Screening
-      |
-      v
-Final Validation
+```mermaid
+flowchart TD
+
+    A["RF / Test Source"]
+    B["Capture Interface"]
+    C["DPDK Processing"]
+    D["Storage"]
+    E["Playback Engine"]
+    F["Validation Link"]
+    G["Receiver"]
+    H["Sequence Audit"]
+    I["Anomaly Screening"]
+    J["Final Validation"]
+
+    A -->|"Verify Input"| B
+    B -->|"Verify RX Counters"| C
+    C -->|"Verify Processing Stability<br/>Profile with Intel VTune"| D
+    D -->|"Verify Recorded Dataset"| E
+    E -->|"Verify TX Counters"| F
+    F -->|"Verify Transport"| G
+    G -->|"Verify Packet Count"| H
+    H -->|"Verify Continuity"| I
+    I --> J
 ```
 
 This staged approach makes debugging easier because failures can be isolated to
@@ -871,25 +845,27 @@ DPDK packet statistics tell us what happened to the packets.
 Intel VTune helps investigate what happened inside the processor while those
 packets were being handled.
 
-```text
-                SYSTEM VALIDATION
-                       |
-           +-----------+-----------+
-           |                       |
-           v                       v
-    Packet-Level              CPU-Level
-     Validation               Profiling
-           |                       |
-    Packet Counts            Intel VTune
-    Sequence Gaps            CPU Behavior
-    Duplicates               Hotspots
-    Drop Counters            Thread Execution
-    Replay Integrity         Runtime Bottlenecks
-           |                       |
-           +-----------+-----------+
-                       |
-                       v
-              Complete Benchmark
+```mermaid
+flowchart TD
+
+    A["SYSTEM VALIDATION"]
+
+    B["Packet-Level Validation"]
+    C["CPU-Level Profiling"]
+
+    D["Packet Counts<br/>Sequence Gaps<br/>Duplicates<br/>Drop Counters<br/>Replay Integrity"]
+    E["Intel VTune<br/>CPU Behavior<br/>Hotspots<br/>Thread Execution<br/>Runtime Bottlenecks"]
+
+    F["Complete Benchmark"]
+
+    A --> B
+    A --> C
+
+    B --> D
+    C --> E
+
+    D --> F
+    E --> F
 ```
 
 Using both perspectives produces a much stronger validation model than relying
@@ -926,72 +902,57 @@ processing system**.
 
 # Final Validation Architecture
 
-```text
-                  OPERATOR
-                     |
-          +----------+----------+
-          |                     |
-          v                     v
-        CLI                    GUI
-          |                     |
-          +----------+----------+
-                     |
-                     v
-          +----------------------+
-          | High-Speed Capture   |
-          +----------+-----------+
-                     |
-                     v
-          +----------------------+
-          | Recorded Dataset     |
-          +----------+-----------+
-                     |
-                     v
-          +----------------------+
-          | Playback Engine      |
-          +----------+-----------+
-                     |
-                     v
-          +----------------------+
-          | Isolated Loopback    |
-          | Validation Link      |
-          +----------+-----------+
-                     |
-                     v
-          +----------------------+
-          | Validation Receiver  |
-          +----------+-----------+
-                     |
-            +--------+--------+
-            |                 |
-            v                 v
-     Sequence Audit      Data Integrity
-            |                 |
-            +--------+--------+
-                     |
-                     v
-          +----------------------+
-          | Anomaly Screening    |
-          +----------+-----------+
-                     |
-                     v
-          +----------------------+
-          | Validation Results   |
-          +----------------------+
+```mermaid
+flowchart TD
 
+    subgraph CONTROL["Operator Control"]
+        direction TB
+        OP["OPERATOR"]
+        CLI["CLI"]
+        GUI["GUI"]
 
-              PERFORMANCE PATH
+        OP --> CLI
+        OP --> GUI
+    end
 
-          High-Speed Workload
-                 |
-                 v
-          +----------------------+
-          | Intel VTune          |
-          | Performance Profiler |
-          +----------+-----------+
-                     |
-                     v
-          CPU / Runtime Analysis
+    subgraph VALIDATION["Capture, Playback & Validation"]
+        direction TB
+        CAPTURE["High-Speed Capture"]
+        DATASET["Recorded Dataset"]
+        PLAYBACK["Playback Engine"]
+        LOOP["Isolated Loopback<br/>Validation Link"]
+        RECEIVER["Validation Receiver"]
+        SEQ["Sequence Audit"]
+        INTEGRITY["Data Integrity"]
+        ANOMALY["Anomaly Screening"]
+        RESULTS["Validation Results"]
+
+        CAPTURE --> DATASET
+        DATASET --> PLAYBACK
+        PLAYBACK --> LOOP
+        LOOP --> RECEIVER
+
+        RECEIVER --> SEQ
+        RECEIVER --> INTEGRITY
+
+        SEQ --> ANOMALY
+        INTEGRITY --> ANOMALY
+
+        ANOMALY --> RESULTS
+    end
+
+    subgraph PERFORMANCE["Performance Path"]
+        direction TB
+        WORKLOAD["High-Speed Workload"]
+        VTUNE["Intel VTune<br/>Performance Profiler"]
+        ANALYSIS["CPU / Runtime Analysis"]
+
+        WORKLOAD --> VTUNE
+        VTUNE --> ANALYSIS
+    end
+
+    CLI --> CAPTURE
+    GUI --> CAPTURE
 ```
 
 ---

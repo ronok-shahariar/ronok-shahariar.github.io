@@ -6,7 +6,6 @@ date: 2024-08-01
 excerpt: "Design and verification of reusable RTL hardware blocks including parameterized synchronous FIFOs and glitch-free protocol FSM controllers using Verilog and Cocotb-based verification."
 ---
 
-# Configurable Synchronous FIFO & Protocol FSM Controllers
 
 ## Overview
 
@@ -25,33 +24,22 @@ The project includes a **configurable synchronous FIFO buffer** and **serial pro
 
 # System Architecture Overview
 
-```text
-                 Digital Hardware Building Blocks
+```mermaid
+flowchart TD
 
-                         +----------------+
-                         |                |
-                         |   Testbench    |
-                         |  (Cocotb)      |
-                         |                |
-                         +-------+--------+
-                                 |
-                                 |
-              +------------------+------------------+
-              |                                     |
-              v                                     v
+    TB["Cocotb Testbench"]
 
-     +-------------------+              +-------------------+
-     |                   |              |                   |
-     | Synchronous FIFO  |              | Protocol FSM      |
-     | Controller        |              | Controller        |
-     |                   |              |                   |
-     +-------------------+              +-------------------+
+    FIFO["Synchronous FIFO<br/>Controller"]
+    FSM["Protocol FSM<br/>Controller"]
 
-              |                                     |
-              v                                     v
+    BUFFER["Data Buffering Logic"]
+    SERIAL["Serial Control Logic"]
 
-     Data Buffering Logic              Serial Control Logic
+    TB --> FIFO
+    TB --> FSM
 
+    FIFO --> BUFFER
+    FSM --> SERIAL
 ```
 
 ---
@@ -75,23 +63,69 @@ A parameterized synchronous FIFO buffer was designed to provide reliable tempora
 
 The FIFO supports simultaneous read and write operations while maintaining correct data ordering.
 
-```text
-             Write Interface
+<div style="
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  gap:8px;
+  margin:22px 0 26px;
+  font-size:0.92em;
+">
 
-                  |
-                  v
+  <div style="
+    width:min(100%,420px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Write Interface</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Input Data &amp; Write Control
+    </div>
+  </div>
 
-        +-------------------+
-        |                   |
-        |  Synchronous FIFO |
-        |                   |
-        +-------------------+
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
 
-                  |
-                  v
+  <div style="
+    width:min(100%,420px);
+    text-align:center;
+    padding:16px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Synchronous FIFO</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Buffered Data Storage
+    </div>
+  </div>
 
-             Read Interface
-```
+  <div style="font-size:1.15em; opacity:0.65;">
+    <i class="fas fa-arrow-down"></i>
+  </div>
+
+  <div style="
+    width:min(100%,420px);
+    text-align:center;
+    padding:14px 18px;
+    border:1px solid rgba(128,128,128,0.30);
+    border-radius:8px;
+    background:rgba(128,128,128,0.06);
+    color:inherit;
+  ">
+    <div style="font-weight:600;">Read Interface</div>
+    <div style="font-size:0.82em; opacity:0.70; margin-top:3px;">
+      Output Data &amp; Read Control
+    </div>
+  </div>
+
+</div>
 
 ### Verification Coverage
 
@@ -122,38 +156,19 @@ with registered outputs to ensure stable and glitch-free control signals.
 
 ## FSM Design Flow
 
-```text
-          Input Signals
+```mermaid
+flowchart TD
 
-                |
-                v
+    INPUT["Input Signals"]
+    STATE["State Register"]
+    NEXT["Next-State Logic"]
+    OUTPUT["Output Logic"]
+    CONTROL["Control Signals"]
 
-      +----------------+
-      |                |
-      | State Register |
-      |                |
-      +----------------+
-
-                |
-                v
-
-      +----------------+
-      | Next-State     |
-      | Logic          |
-      +----------------+
-
-                |
-                v
-
-      +----------------+
-      | Output Logic   |
-      +----------------+
-
-                |
-                v
-
-        Control Signals
-
+    INPUT --> STATE
+    STATE --> NEXT
+    NEXT --> OUTPUT
+    OUTPUT --> CONTROL
 ```
 
 ---
@@ -182,26 +197,18 @@ The verification framework combines RTL simulation with Python-based automated t
 ## Verification Architecture
 
 ```mermaid
-flowchart LR
+flowchart TD
 
     TB["Cocotb Python Testbench"]
-
     RTL["Verilog RTL Design"]
-
     SIM["Icarus Verilog Simulator"]
-
     WAVE["GTKWave Analysis"]
-
     ASSERT["Python Assertions"]
 
     TB --> RTL
-
     RTL --> SIM
-
     SIM --> WAVE
-
     TB --> ASSERT
-
 ```
 
 ---
@@ -242,31 +249,22 @@ flowchart TD
     START["Generate Test Transactions"]
 
     WRITE["FIFO Write Operations"]
-
     READ["FIFO Read Operations"]
 
     CHECK["Data Integrity Check"]
-
     STATUS["Verify Full / Empty Flags"]
-
     ASSERT["Cocotb Assertions"]
-
     RESULT["Verification Result"]
 
     START --> WRITE
-
     START --> READ
 
     WRITE --> CHECK
-
     READ --> CHECK
 
     CHECK --> STATUS
-
     STATUS --> ASSERT
-
     ASSERT --> RESULT
-
 ```
 
 ---
@@ -274,26 +272,18 @@ flowchart TD
 # FSM Verification Flow
 
 ```mermaid
-flowchart LR
+flowchart TD
 
     INPUT["Protocol Stimulus"]
-
     FSM["FSM Controller"]
-
     STATE["State Transition Check"]
-
     OUTPUT["Output Signal Validation"]
-
     WAVE["GTKWave Timing Analysis"]
 
     INPUT --> FSM
-
     FSM --> STATE
-
     STATE --> OUTPUT
-
     OUTPUT --> WAVE
-
 ```
 
 ---
@@ -340,20 +330,19 @@ The Cocotb environment enables repeatable regression testing without manual wave
 
 This project demonstrates the complete workflow of developing reusable digital hardware components:
 
-```text
-RTL Architecture Design
-          |
-          v
-Parameterized Verilog Implementation
-          |
-          v
-Cocotb Verification Environment
-          |
-          v
-Simulation & Waveform Analysis
-          |
-          v
-Validated Hardware Building Blocks
+```mermaid
+flowchart TD
+
+    A["RTL Architecture Design"]
+    B["Parameterized Verilog Implementation"]
+    C["Cocotb Verification Environment"]
+    D["Simulation & Waveform Analysis"]
+    E["Validated Hardware Building Blocks"]
+
+    A --> B
+    B --> C
+    C --> D
+    D --> E
 ```
 
 The final design provides reusable, verified RTL modules suitable for integration into larger digital systems requiring reliable buffering, protocol control, and deterministic hardware behavior.

@@ -1,6 +1,6 @@
 ---
 layout: archive
-title: "Curriculum Vitae"
+title: ""
 permalink: /cv/
 author_profile: true
 redirect_from:
@@ -9,23 +9,6 @@ redirect_from:
 
 {% include base_path %}
 
-<div style="margin-bottom: 25px;">
-  <a href="{{ base_path }}/files/CV_Md_Shahariar_Hassan_Ronok.pdf"
-     class="btn btn--primary"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="padding: 10px 18px; font-weight: 600; text-decoration: none; border-radius: 6px;">
-    <i class="fas fa-file-pdf"></i> Download Full Academic CV (PDF)
-  </a>
-
-  <a href="https://drive.google.com/file/d/1xXKoSFNbE9CQVnZ1c53fJ6hPd7LCN24B/view?usp=drive_link"
-     class="btn"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="padding: 10px 18px; font-weight: 600; text-decoration: none; border-radius: 6px; margin-left: 8px;">
-    <i class="fas fa-graduation-cap"></i> View Academic Course Syllabus
-  </a>
-</div>
 
 # Research & Academic Interests
 
@@ -69,44 +52,104 @@ The review explored wearable and non-invasive sensing technologies that can supp
 ### Core Coursework
 
 
-
-<h3>Core Coursework</h3>
-
 <div style="overflow-x:auto; margin:12px 0 22px;">
-  <table style="width:100%; border-collapse:collapse; font-size:0.82em; line-height:1.6; color:#4a4a4a;">
+  <table style="
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.82em;
+    line-height:1.6;
+    color:inherit;
+  ">
 
     <tr>
-      <td style="width:17%; padding:10px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top; white-space:nowrap;">
+      <td style="
+        width:17%;
+        padding:10px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        white-space:nowrap;
+        font-weight:600;
+        color:inherit;
+      ">
         EEE
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         Circuits &amp; Systems I–II • Analog Electronic Circuits I–II • Electrical Machines I–II • Power System • Digital Techniques • Industrial Electronics • Communication Engineering • Digital Signal Processing • Electromagnetic Fields &amp; Waves • Control Systems • VLSI Design
       </td>
     </tr>
 
     <tr>
-      <td style="padding:10px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top; white-space:nowrap;">
+      <td style="
+        padding:10px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        white-space:nowrap;
+        font-weight:600;
+        color:inherit;
+      ">
         CSE
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         Computer Programming • Object-Oriented Programming • Data Structures &amp; Algorithms • Database Systems • Software Engineering &amp; Information System Design • Computer Architecture &amp; Design • Operating Systems • Microprocessors &amp; Assembly Language • Software Development Projects
       </td>
     </tr>
 
     <tr>
-      <td style="padding:10px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top; white-space:nowrap;">
+      <td style="
+        padding:10px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        white-space:nowrap;
+        font-weight:600;
+        color:inherit;
+      ">
         Advanced / Optional
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         Artificial Intelligence • Computer Networks • Wireless Networks • Human Computer Interaction • Network Planning • System Simulation &amp; Modeling • Computer Aided Power System Design • Renewable Energy • Microwave Engineering • Power System Operation &amp; Control • High Voltage Engineering
       </td>
     </tr>
 
     <tr>
-      <td style="padding:10px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top; white-space:nowrap;">
+      <td style="
+        padding:10px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        white-space:nowrap;
+        font-weight:600;
+        color:inherit;
+      ">
         Other Courses
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         Calculus &amp; Coordinate Geometry • Differential Equations • Vector Analysis &amp; Linear Algebra • Numerical Methods • Complex Variables, Statistics &amp; Transform Methods • Physics • Chemistry • Technical English • Industrial Management &amp; Accountancy • Industrial Training • Thesis / Project
       </td>
     </tr>
@@ -114,7 +157,11 @@ The review explored wearable and non-invasive sensing technologies that can supp
   </table>
 </div>
 
-📄 <a href="https://drive.google.com/file/d/1xXKoSFNbE9CQVnZ1c53fJ6hPd7LCN24B/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><strong>View / Download Complete Academic Course Syllabus</strong></a>
+📄 <a href="https://drive.google.com/file/d/1xXKoSFNbE9CQVnZ1c53fJ6hPd7LCN24B/view?usp=drive_link" target="_blank" rel="noopener noreferrer"><strong>View Academic Course Syllabus</strong></a>
+
+📄 <a href="https://drive.google.com/file/d/1mSRFrZXsxR-GBl1nm3_B3LcIPZmQKkO6/view?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>View Academic Transcript &amp; Certificate</strong></a>
+
+📄 <a href="https://drive.google.com/file/d/1YE8peSW8y1f0FlbFe8eWNQR5WkyYCgaS/view?usp=sharing" target="_blank" rel="noopener noreferrer"><strong>View Letters of Recommendation (LOR)</strong></a>
 
 ---
 
@@ -139,13 +186,33 @@ The review explored wearable and non-invasive sensing technologies that can supp
 
 
 <div style="overflow-x:auto; margin:12px 0 24px;">
-  <table style="width:100%; border-collapse:collapse; font-size:0.82em; line-height:1.6; color:#4a4a4a;">
+  <table style="
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.82em;
+    line-height:1.6;
+    color:inherit;
+  ">
 
     <tr>
-      <td style="width:22%; padding:11px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top;">
+      <td style="
+        width:22%;
+        padding:11px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        font-weight:600;
+        color:inherit;
+      ">
         High-Speed Networking &amp; Linux Systems
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         <a href="https://www.dpdk.org/" target="_blank" rel="noopener noreferrer">Data Plane Development Kit (DPDK)</a> •
         Kernel Bypass Networking •
         <a href="https://docs.kernel.org/admin-guide/mm/hugetlbpage.html" target="_blank" rel="noopener noreferrer">HugePages</a> •
@@ -160,10 +227,23 @@ The review explored wearable and non-invasive sensing technologies that can supp
     </tr>
 
     <tr>
-      <td style="padding:11px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top;">
+      <td style="
+        padding:11px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        font-weight:600;
+        color:inherit;
+      ">
         Digital Design &amp; Computer Architecture
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         Verilog HDL •
         SystemVerilog •
         <a href="https://riscv.org/" target="_blank" rel="noopener noreferrer">RISC-V</a> •
@@ -178,10 +258,23 @@ The review explored wearable and non-invasive sensing technologies that can supp
     </tr>
 
     <tr>
-      <td style="padding:11px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top;">
+      <td style="
+        padding:11px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        font-weight:600;
+        color:inherit;
+      ">
         Hardware Verification &amp; Automation
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         <a href="https://www.cocotb.org/" target="_blank" rel="noopener noreferrer">Cocotb</a> •
         Python-Based Hardware Testbenches •
         <a href="https://verilator.org/" target="_blank" rel="noopener noreferrer">Verilator</a> •
@@ -197,10 +290,23 @@ The review explored wearable and non-invasive sensing technologies that can supp
     </tr>
 
     <tr>
-      <td style="padding:11px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top;">
+      <td style="
+        padding:11px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        font-weight:600;
+        color:inherit;
+      ">
         FPGA &amp; Electronic Design Automation
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         <a href="https://www.amd.com/en/products/software/adaptive-socs-and-fpgas/vivado.html" target="_blank" rel="noopener noreferrer">AMD Xilinx Vivado</a> •
         Register-Transfer Level (RTL) Simulation •
         Synthesis •
@@ -214,10 +320,23 @@ The review explored wearable and non-invasive sensing technologies that can supp
     </tr>
 
     <tr>
-      <td style="padding:11px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top;">
+      <td style="
+        padding:11px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        font-weight:600;
+        color:inherit;
+      ">
         Embedded Systems &amp; Firmware
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         Bare-Metal C •
         C++ •
         <a href="https://www.st.com/en/microcontrollers-microprocessors/stm32-32-bit-arm-cortex-mcus.html" target="_blank" rel="noopener noreferrer">STM32 ARM Cortex-M</a> •
@@ -231,10 +350,23 @@ The review explored wearable and non-invasive sensing technologies that can supp
     </tr>
 
     <tr>
-      <td style="padding:11px 12px; background:#f5f7fa; border:1px solid #e1e5ea; vertical-align:top;">
+      <td style="
+        padding:11px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        vertical-align:top;
+        font-weight:600;
+        color:inherit;
+      ">
         PCB Design &amp; Laboratory Tools
       </td>
-      <td style="padding:10px 14px; border:1px solid #e1e5ea;">
+
+      <td style="
+        padding:10px 14px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
         <a href="https://www.kicad.org/" target="_blank" rel="noopener noreferrer">KiCad</a> •
         Multisim •
         Proteus •
@@ -289,8 +421,16 @@ July 2024 – Present
 - Contributed to engineering projects for <a href="https://xrcomm.com/" target="_blank" rel="noopener noreferrer">XRComm</a>, a U.S.-based telecommunications company, involving high-throughput multi-channel and wideband data-processing systems.
 
 
-<div style="margin:16px 0 22px; padding:12px 15px; background:#f5f7fa; border:1px solid #e1e5ea; border-radius:8px; font-size:0.88em;">
-  <span>Performance Achievement:</span>
+<div style="
+  margin:16px 0 22px;
+  padding:12px 15px;
+  background:rgba(128,128,128,0.08);
+  border:1px solid rgba(128,128,128,0.30);
+  border-radius:8px;
+  font-size:0.88em;
+  color:inherit;
+">
+  <span style="font-weight:600;">Performance Achievement:</span>
   Sustained <strong>100 Gbps packet throughput with zero packet loss</strong> during end-to-end system validation.
 </div>
 
@@ -298,42 +438,192 @@ July 2024 – Present
 ### Successfully Delivered High-Throughput Telecom Projects
 
 <div style="overflow-x:auto; margin:12px 0 22px;">
-  <table style="width:100%; border-collapse:collapse; font-size:0.84em; line-height:1.6; color:#4a4a4a;">
+  <table style="
+    width:100%;
+    border-collapse:collapse;
+    font-size:0.84em;
+    line-height:1.6;
+    color:inherit;
+  ">
 
     <tr>
-      <th style="padding:9px 12px; background:#f5f7fa; border:1px solid #e1e5ea; text-align:left;">Project</th>
-      <th style="padding:9px 12px; background:#f5f7fa; border:1px solid #e1e5ea; text-align:left;">Configuration</th>
-      <th style="padding:9px 12px; background:#f5f7fa; border:1px solid #e1e5ea; text-align:left;">Aggregate Rate</th>
+      <th style="
+        padding:9px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        text-align:left;
+        color:inherit;
+        font-weight:600;
+      ">
+        Project
+      </th>
+
+      <th style="
+        padding:9px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        text-align:left;
+        color:inherit;
+        font-weight:600;
+      ">
+        Configuration
+      </th>
+
+      <th style="
+        padding:9px 12px;
+        background:rgba(128,128,128,0.10);
+        border:1px solid rgba(128,128,128,0.30);
+        text-align:left;
+        color:inherit;
+        font-weight:600;
+      ">
+        Aggregate Rate
+      </th>
     </tr>
 
     <tr>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">4T4R MIMO</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">4 channels / packet @ 491.52 MHz per channel</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">1.966 GHz</td>
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        4T4R MIMO
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        4 channels / packet @ 491.52 MHz per channel
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        1.966 GHz
+      </td>
     </tr>
 
     <tr>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">3T3R MIMO</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">3 channels / packet @ 491.52 MHz per channel</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">1.476 GHz</td>
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        3T3R MIMO
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        3 channels / packet @ 491.52 MHz per channel
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        1.476 GHz
+      </td>
     </tr>
 
     <tr>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">Wideband (1-CH)</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">1 channel @ 1.4756 GHz</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">1.4756 GHz</td>
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        Wideband (1-CH)
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        1 channel @ 1.4756 GHz
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        1.4756 GHz
+      </td>
     </tr>
 
     <tr>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">Wideband (2-CH)</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">2 channels @ 1.4756 GHz</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">2.951 GHz</td>
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        Wideband (2-CH)
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        2 channels @ 1.4756 GHz
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        2.951 GHz
+      </td>
     </tr>
 
     <tr>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">Wideband (4-CH)</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">4 channels @ 1.4756 GHz</td>
-      <td style="padding:9px 12px; border:1px solid #e1e5ea;">5.902 GHz</td>
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        Wideband (4-CH)
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        4 channels @ 1.4756 GHz
+      </td>
+
+      <td style="
+        padding:9px 12px;
+        border:1px solid rgba(128,128,128,0.30);
+        background:rgba(128,128,128,0.03);
+        color:inherit;
+      ">
+        5.902 GHz
+      </td>
     </tr>
 
   </table>
@@ -431,27 +721,63 @@ Rajshahi University of Engineering & Technology (RUET)
 
 # Other Portfolios
 
-<div style="display:flex; flex-wrap:wrap; gap:16px; margin:15px 0 25px;">
+<div style="
+  display:flex;
+  flex-wrap:wrap;
+  gap:16px;
+  margin:15px 0 25px;
+">
 
   <a href="https://ronok-automation-portfolio-sm89.vercel.app/"
      target="_blank"
      rel="noopener noreferrer"
-     style="flex:1; min-width:280px; border:1px solid #e1e5ea; border-radius:8px; text-decoration:none; color:inherit; overflow:hidden; background:#fff;">
+     style="
+       flex:1;
+       min-width:280px;
+       border:1px solid rgba(128,128,128,0.30);
+       border-radius:8px;
+       text-decoration:none;
+       color:inherit;
+       overflow:hidden;
+       background:rgba(128,128,128,0.06);
+     ">
 
-    <div style="height:180px; overflow:hidden; border-bottom:1px solid #e1e5ea;">
+    <div style="
+      height:180px;
+      overflow:hidden;
+      border-bottom:1px solid rgba(128,128,128,0.30);
+      background:rgba(128,128,128,0.04);
+    ">
       <iframe
         src="https://ronok-automation-portfolio-sm89.vercel.app/"
-        style="width:100%; height:100%; border:none; pointer-events:none;"
+        style="
+          width:100%;
+          height:100%;
+          border:none;
+          pointer-events:none;
+        "
         loading="lazy">
       </iframe>
     </div>
 
-    <div style="padding:12px 14px;">
-      <div style="font-size:1em; font-weight:600; margin-bottom:4px;">
+    <div style="padding:12px 14px; color:inherit;">
+      <div style="
+        font-size:1em;
+        font-weight:600;
+        margin-bottom:4px;
+        color:inherit;
+      ">
         Industrial Automation Portfolio
-        <i class="fas fa-external-link-alt" style="font-size:0.75em; margin-left:6px;"></i>
+        <i class="fas fa-external-link-alt"
+           style="font-size:0.75em; margin-left:6px; opacity:0.75;">
+        </i>
       </div>
-      <div style="font-size:0.85em; color:#666;">
+
+      <div style="
+        font-size:0.85em;
+        color:inherit;
+        opacity:0.78;
+      ">
         PLC, industrial control, automation systems, and related engineering projects.
       </div>
     </div>
@@ -460,22 +786,53 @@ Rajshahi University of Engineering & Technology (RUET)
   <a href="https://porfolio-ronok.vercel.app/"
      target="_blank"
      rel="noopener noreferrer"
-     style="flex:1; min-width:280px; border:1px solid #e1e5ea; border-radius:8px; text-decoration:none; color:inherit; overflow:hidden; background:#fff;">
+     style="
+       flex:1;
+       min-width:280px;
+       border:1px solid rgba(128,128,128,0.30);
+       border-radius:8px;
+       text-decoration:none;
+       color:inherit;
+       overflow:hidden;
+       background:rgba(128,128,128,0.06);
+     ">
 
-    <div style="height:180px; overflow:hidden; border-bottom:1px solid #e1e5ea;">
+    <div style="
+      height:180px;
+      overflow:hidden;
+      border-bottom:1px solid rgba(128,128,128,0.30);
+      background:rgba(128,128,128,0.04);
+    ">
       <iframe
         src="https://porfolio-ronok.vercel.app/"
-        style="width:100%; height:100%; border:none; pointer-events:none;"
+        style="
+          width:100%;
+          height:100%;
+          border:none;
+          pointer-events:none;
+        "
         loading="lazy">
       </iframe>
     </div>
 
-    <div style="padding:12px 14px;">
-      <div style="font-size:1em; font-weight:600; margin-bottom:4px;">
+    <div style="padding:12px 14px; color:inherit;">
+      <div style="
+        font-size:1em;
+        font-weight:600;
+        margin-bottom:4px;
+        color:inherit;
+      ">
         Software Development Portfolio
-        <i class="fas fa-external-link-alt" style="font-size:0.75em; margin-left:6px;"></i>
+        <i class="fas fa-external-link-alt"
+           style="font-size:0.75em; margin-left:6px; opacity:0.75;">
+        </i>
       </div>
-      <div style="font-size:0.85em; color:#666;">
+
+      <div style="
+        font-size:0.85em;
+        color:inherit;
+        opacity:0.78;
+      ">
         Software engineering, web development, applications, and programming projects.
       </div>
     </div>
