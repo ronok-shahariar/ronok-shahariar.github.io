@@ -2,7 +2,7 @@
 title: "Part 4: Telemetry Pipeline & Cloud Observability (gRPC, Prometheus, Grafana)"
 collection: portfolio
 type: systems
-date: 2024-07-16
+date: 2026-07-16
 classes: wide
 excerpt: "Real-time network and system health metrics: gRPC-based telemetry daemon, custom Prometheus exporter, and interactive Grafana dashboards."
 ---

@@ -2,7 +2,7 @@
 title: "Part 5: Operator Interfaces, Intel VTune Profiling & Line-Rate Benchmarks"
 collection: portfolio
 type: systems
-date: 2024-07-15
+date: 2026-07-15
 classes: wide
 excerpt: "Operator control plane and data fidelity proofs: CLI utilities, GUI clients, loopback record/playback anomaly screening, and 859M+ packet zero-drop validation."
 ---

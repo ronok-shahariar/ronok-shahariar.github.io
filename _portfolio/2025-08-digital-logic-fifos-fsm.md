@@ -2,7 +2,7 @@
 title: "Configurable Synchronous FIFO & Protocol FSM Controllers"
 collection: portfolio
 type: vlsi
-date: 2024-08-01
+date: 2025-08-01
 excerpt: "Design and verification of reusable RTL hardware blocks including parameterized synchronous FIFOs and glitch-free protocol FSM controllers using Verilog and Cocotb-based verification."
 ---
 

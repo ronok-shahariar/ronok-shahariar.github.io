@@ -2,7 +2,7 @@
 title: "High-Throughput Satellite DAQ & Record/Playback Telemetry Platform"
 collection: portfolio
 type: systems
-date: 2024-07-20
+date: 2026-07-20
 permalink: /portfolio/satellite-telemetry-daq
 classes: wide
 excerpt: "Scalable line-rate satellite data acquisition platform supporting MIMO and Ultra-Wideband profiles (up to 4 GHz) with DPDK zero-copy capture, primary/secondary IPC, and record-playback anomaly validation."

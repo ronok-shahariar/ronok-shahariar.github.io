@@ -2,7 +2,7 @@
 title: "Part 3: High-Speed DPDK Core Data Plane – Kernel Bypass & Seqlocks"
 collection: portfolio
 type: systems
-date: 2024-07-17
+date: 2026-07-17
 classes: wide
 excerpt: "Core user-space ingestion engine: C, DPDK Poll Mode Drivers, HugePages memory management, POSIX shared memory, and non-blocking sequence locks."
 ---

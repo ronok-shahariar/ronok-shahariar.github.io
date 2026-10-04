@@ -2,7 +2,7 @@
 title: "Part 2: Instrumentation & Control Bridge (LabVIEW, Python, SCPI/VISA, gRPC)"
 collection: portfolio
 type: systems
-date: 2024-07-18
+date: 2026-07-18
 classes: wide
 excerpt: "Automated RF instrumentation and control through a VISA/SCPI-to-gRPC bridge, enabling LabVIEW, NI MAX, and Python/PyVISA clients to operate modern gRPC-based RF services over TCP/IP."
 ---
