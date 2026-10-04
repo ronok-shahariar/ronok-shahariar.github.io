@@ -1,0 +1,826 @@
+---
+layout: archive
+title: ""
+permalink: /activities/
+author_profile: true
+---
+
+{% include base_path %}
+
+<style>
+  /* =========================================================
+     PAGE WRAPPER
+  ========================================================= */
+  .activities-page-wrapper {
+    width: 100%;
+  }
+
+  .activities-intro {
+    margin-bottom: 24px;
+    opacity: 0.78;
+    line-height: 1.6;
+  }
+
+  .activities-section-title {
+    border-bottom: 1px solid #e2e8f0;
+    padding-bottom: 8px;
+    margin-top: 28px;
+    margin-bottom: 20px;
+    font-size: 1.25em;
+  }
+
+  .activity-section {
+    margin-bottom: 48px;
+  }
+
+  /* =========================================================
+     SECTION 1: ECE Innovation Lab
+     Activities: 11, 12
+  ========================================================= */
+  .ece-activities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 20px 0 40px 0;
+    align-items: start;
+  }
+
+  .ece-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--global-bg-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .ece-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .ece-card a {
+    display: block;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .ece-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .ece-caption {
+    padding: 12px 14px;
+    text-align: center;
+    font-size: 0.95em;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  /* =========================================================
+     SECTION 2: Techocracy 1.0 Robotics Competition
+     Activities: 13, 133
+  ========================================================= */
+  .techocracy-activities {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 20px 0 40px 0;
+    align-items: start;
+  }
+
+  .techocracy-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--global-bg-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .techocracy-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .techocracy-card a {
+    display: block;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .techocracy-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .techocracy-caption {
+    padding: 12px 14px;
+    text-align: center;
+    font-size: 0.95em;
+    font-weight: 500;
+    line-height: 1.45;
+  }
+
+  /* =========================================================
+   Techocracy 1.0 - YouTube Video
+========================================================= */
+  .techocracy-video {
+    margin-top: 24px;
+  }
+
+  .techocracy-video-title {
+    font-size: 1em;
+    font-weight: 600;
+    margin-bottom: 10px;
+  }
+
+  .techocracy-video-wrapper {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%; /* 16:9 ratio */
+    height: 0;
+    overflow: hidden;
+    border-radius: 8px;
+    border: 1px solid #e2e8f0;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .techocracy-video-wrapper iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+  }
+
+  /* Left column: Activity 13 + Competition Video */
+  .techocracy-left-column {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+  /* =========================================================
+   CERTIFICATES & PROFESSIONAL DEVELOPMENT
+========================================================= */
+  .certificates-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 24px;
+    margin: 20px 0 40px 0;
+    align-items: start;
+  }
+
+  .certificate-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--global-bg-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+    transition:
+      transform 0.2s ease,
+      box-shadow 0.2s ease;
+  }
+
+  .certificate-card:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 6px 14px rgba(0, 0, 0, 0.08);
+  }
+
+  .certificate-card a {
+    display: block;
+    text-decoration: none;
+    outline: none;
+    box-shadow: none;
+  }
+
+  .certificate-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  /* =========================================================
+   INDUSTRIAL AUTOMATION CHANNEL
+========================================================= */
+  .automation-channel {
+    margin: 20px 0 40px 0;
+  }
+
+  .automation-channel-card {
+    border: 1px solid #e2e8f0;
+    border-radius: 8px;
+    overflow: hidden;
+    background: var(--global-bg-color);
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  }
+
+  .automation-channel-card img {
+    width: 100%;
+    height: auto;
+    display: block;
+  }
+
+  .automation-channel-content {
+    padding: 18px 20px;
+  }
+
+  .automation-channel-content p {
+    margin-bottom: 16px;
+    line-height: 1.6;
+  }
+
+  @media (max-width: 768px) {
+    .certificates-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+
+  /* =========================================================
+     MOBILE RESPONSIVE
+  ========================================================= */
+  @media (max-width: 768px) {
+    .ece-activities,
+    .techocracy-activities {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="activities-page-wrapper">
+
+
+  <!-- =======================================================
+       SECTION 1: ECE Innovation Lab
+       Activities: 11, 12
+  ======================================================== -->
+  <section class="activity-section" id="ece-innovation-lab">
+    <h2 class="activities-section-title">ECE Innovation Lab</h2>
+
+    <p class="activities-intro">
+      As <strong>Vice President of the ECE Innovation Lab</strong>, I
+      contributed to technical and research-oriented student activities and
+      conducted workshops on <strong>Electronic Circuit Design</strong> and
+      <strong>Embedded Systems</strong>.
+    </p>
+
+    <div class="ece-activities">
+      <!-- Activity 11 -->
+      <div class="ece-card">
+        <a
+          href="{{ base_path }}/images/activity/activity11.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/activity/activity11.jpg"
+            alt="ECE Innovation Lab departmental technical activity"
+            loading="lazy"
+          />
+        </a>
+
+        <div class="ece-caption">
+          ECE Innovation Lab — Departmental Technical Activity
+        </div>
+      </div>
+
+      <!-- Activity 12 -->
+      <div class="ece-card">
+        <a
+          href="{{ base_path }}/images/activity/activity12.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/activity/activity12.jpg"
+            alt="ECE Innovation Lab technical session"
+            loading="lazy"
+          />
+        </a>
+
+        <div class="ece-caption">
+          ECE Innovation Lab — Technical Session &amp; Student Engagement
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+       SECTION 2: Techocracy 1.0 Robotics Competition
+       Activities: 13, 133
+  ======================================================== -->
+  <section class="activity-section" id="techocracy-1">
+    <h2 class="activities-section-title">
+      Techocracy 1.0 Robotics Competition
+    </h2>
+
+    <p class="activities-intro">
+      Served as <strong>Team Lead</strong> in the
+      <strong>Techocracy 1.0 Robotics Competition</strong>, where our team
+      secured the <strong>Winner position</strong>. I led the team through
+      system design, implementation, testing, and competition preparation.
+    </p>
+
+    <div class="techocracy-activities">
+      <!-- =====================================================
+       LEFT COLUMN
+       Activity 13 + Competition Video
+  ====================================================== -->
+      <div class="techocracy-left-column">
+        <!-- Activity 13 -->
+        <div class="techocracy-card">
+          <a
+            href="{{ base_path }}/images/activity/activity13.jpg"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img
+              src="{{ base_path }}/images/activity/activity13.jpg"
+              alt="Techocracy 1.0 Robotics Competition winner"
+              loading="lazy"
+            />
+          </a>
+
+          <div class="techocracy-caption">
+            Techocracy 1.0 — Robotics Competition Winner
+          </div>
+        </div>
+
+        <!-- =================================================
+         Competition Video
+        ================================================== -->
+        <div class="techocracy-video">
+          <div class="techocracy-video-title">
+            Techocracy 1.0 — Competition Video
+          </div>
+
+          <div class="techocracy-video-wrapper">
+            <iframe
+              src="https://www.youtube.com/embed/FGE79TDdcBw"
+              title="Techocracy 1.0 Robotics Competition"
+              allow="
+                accelerometer;
+                autoplay;
+                clipboard-write;
+                encrypted-media;
+                gyroscope;
+                picture-in-picture;
+              "
+              allowfullscreen
+            ></iframe>
+          </div>
+        </div>
+      </div>
+
+      <!-- =====================================================
+       RIGHT COLUMN
+       Activity 133
+  ====================================================== -->
+      <div class="techocracy-card">
+        <a
+          href="{{ base_path }}/images/activity/activity133.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/activity/activity133.jpg"
+            alt="Techocracy 1.0 Robotics Competition team"
+            loading="lazy"
+          />
+        </a>
+
+        <div class="techocracy-caption">
+          Team Lead — Techocracy 1.0 Robotics Competition
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+     SECTION 3: Techocracy 2.0
+     Activity: 15
+======================================================== -->
+  <section class="activity-section" id="techocracy-2">
+    <h2 class="activities-section-title">Techocracy 2.0 — Robotics Workshop</h2>
+
+    <p class="activities-intro">
+      Received an <strong>award as a workshop trainer</strong> at
+      <strong>Techocracy 2.0</strong> for conducting a technical workshop on
+      <strong>Line Follower Robot design and implementation</strong>, covering
+      fundamental robotics concepts, sensor-based navigation, control logic, and
+      practical system development.
+    </p>
+
+    <div class="techocracy2-activity">
+      <!-- Activity 15 -->
+      <div class="techocracy2-card">
+        <a
+          href="{{ base_path }}/images/activity/activity15.JPG"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/activity/activity15.JPG"
+            alt="Receiving award as Line Follower Robot workshop trainer at Techocracy 2.0"
+            loading="lazy"
+          />
+        </a>
+
+        <div class="techocracy2-caption">
+          Techocracy 2.0 — Awarded as Line Follower Robot Workshop Trainer
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+     SECTION 4: Certifications & Professional Development
+======================================================== -->
+  <section class="activity-section" id="certifications">
+    <h2 class="activities-section-title">
+      Certifications &amp; Professional Development
+    </h2>
+
+    <p class="activities-intro">
+      Selected certificates reflecting my continued engagement in technical
+      learning, engineering practice, and professional development.
+    </p>
+
+    <div class="certificates-grid">
+      <!-- Certificate 12 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c12.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c12.jpg"
+            alt="Certificate 12"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 11 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c11.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c11.jpg"
+            alt="Certificate 11"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 10 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c10.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c10.jpg"
+            alt="Certificate 10"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 9 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c9.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c9.jpg"
+            alt="Certificate 9"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 8 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c8.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c8.jpg"
+            alt="Certificate 8"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 7 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c7.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c7.jpg"
+            alt="Certificate 7"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 6 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c6.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c6.jpg"
+            alt="Certificate 6"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 5 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c5.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c5.jpg"
+            alt="Certificate 5"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 4 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c4.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c4.jpg"
+            alt="Certificate 4"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 3 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c3.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c3.jpg"
+            alt="Certificate 3"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 2 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c2.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c2.jpg"
+            alt="Certificate 2"
+            loading="lazy"
+          />
+        </a>
+      </div>
+
+      <!-- Certificate 1 -->
+      <div class="certificate-card">
+        <a
+          href="{{ base_path }}/images/certificates/c1.jpg"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/certificates/c1.jpg"
+            alt="Certificate 1"
+            loading="lazy"
+          />
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+     SECTION: Industrial Automation Teaching Channel
+======================================================== -->
+  <section class="activity-section" id="industrial-automation-channel">
+    <h2 class="activities-section-title">
+      Industrial Automation Teaching &amp; Technical Content
+    </h2>
+
+    <p class="activities-intro">
+      I maintain a technical YouTube channel focused on teaching
+      <strong>industrial automation and control systems</strong>, including
+      <strong>PLC programming</strong>, <strong>SCADA</strong>,
+      <strong>DCS</strong>, <strong>industrial wiring</strong>, and
+      <strong>automation architecture design</strong>. The content is based on
+      practical system development, simulation, troubleshooting, and
+      implementation-oriented learning.
+    </p>
+
+    <div class="automation-channel">
+      <div class="automation-channel-card">
+        <!-- YouTube Channel Preview -->
+        <a
+          href="https://www.youtube.com/@mdshahariarhasanronok662"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          <img
+            src="{{ base_path }}/images/activity/youtube.png"
+            alt="Industrial Automation YouTube Channel"
+            loading="lazy"
+          />
+        </a>
+
+        <div class="automation-channel-content">
+          <p>
+            The channel covers practical topics such as PLC logic development,
+            SCADA interface design, alarms and fault handling, industrial
+            control architecture, data logging, and automation system
+            integration.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- =======================================================
+     SECTION: Other Professional Portfolios
+     Links: Industrial Automation + Software Development
+======================================================== -->
+  <section class="activity-section" id="other-portfolios">
+    <h2 class="activities-section-title">Other Professional Portfolios</h2>
+
+    <p class="activities-intro">
+      Explore my additional project portfolios focused on
+      <strong>Industrial Automation</strong> and
+      <strong>Software Development</strong>.
+    </p>
+
+    <div style="display: flex; flex-wrap: wrap; gap: 16px; margin: 15px 0 25px">
+      <!-- =====================================================
+         Industrial Automation Portfolio
+    ====================================================== -->
+      <a
+        href="https://ronok-automation-portfolio-sm89.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          flex: 1;
+          min-width: 280px;
+          border: 1px solid rgba(128, 128, 128, 0.3);
+          border-radius: 8px;
+          text-decoration: none;
+          color: inherit;
+          overflow: hidden;
+          background: rgba(128, 128, 128, 0.06);
+        "
+      >
+        <div
+          style="
+            height: 180px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+            background: rgba(128, 128, 128, 0.04);
+          "
+        >
+          <iframe
+            src="https://ronok-automation-portfolio-sm89.vercel.app/"
+            title="Industrial Automation Portfolio Preview"
+            loading="lazy"
+            style="
+              width: 100%;
+              height: 100%;
+              border: none;
+              pointer-events: none;
+            "
+          ></iframe>
+        </div>
+
+        <div style="padding: 12px 14px; color: inherit">
+          <div
+            style="
+              font-size: 1em;
+              font-weight: 600;
+              margin-bottom: 4px;
+              color: inherit;
+            "
+          >
+            Industrial Automation Portfolio
+            <i
+              class="fas fa-external-link-alt"
+              style="font-size: 0.75em; margin-left: 6px; opacity: 0.75"
+            ></i>
+          </div>
+
+          <div style="font-size: 0.85em; color: inherit; opacity: 0.78">
+            PLC, SCADA, DCS, industrial control, wiring, automation
+            architecture, and related engineering projects.
+          </div>
+        </div>
+      </a>
+
+      <!-- =====================================================
+         Software Development Portfolio
+    ====================================================== -->
+      <a
+        href="https://porfolio-ronok.vercel.app/"
+        target="_blank"
+        rel="noopener noreferrer"
+        style="
+          flex: 1;
+          min-width: 280px;
+          border: 1px solid rgba(128, 128, 128, 0.3);
+          border-radius: 8px;
+          text-decoration: none;
+          color: inherit;
+          overflow: hidden;
+          background: rgba(128, 128, 128, 0.06);
+        "
+      >
+        <div
+          style="
+            height: 180px;
+            overflow: hidden;
+            border-bottom: 1px solid rgba(128, 128, 128, 0.3);
+            background: rgba(128, 128, 128, 0.04);
+          "
+        >
+          <iframe
+            src="https://porfolio-ronok.vercel.app/"
+            title="Software Development Portfolio Preview"
+            loading="lazy"
+            style="
+              width: 100%;
+              height: 100%;
+              border: none;
+              pointer-events: none;
+            "
+          ></iframe>
+        </div>
+
+        <div style="padding: 12px 14px; color: inherit">
+          <div
+            style="
+              font-size: 1em;
+              font-weight: 600;
+              margin-bottom: 4px;
+              color: inherit;
+            "
+          >
+            Software Development Portfolio
+            <i
+              class="fas fa-external-link-alt"
+              style="font-size: 0.75em; margin-left: 6px; opacity: 0.75"
+            ></i>
+          </div>
+
+          <div style="font-size: 0.85em; color: inherit; opacity: 0.78">
+            Software engineering, web development, applications, backend
+            systems, and programming projects.
+          </div>
+        </div>
+      </a>
+    </div>
+  </section>
+</div>

@@ -1,6 +1,6 @@
 ---
 permalink: /
-title: "Md. Shahariar Hassan Ronok"
+title: ""
 excerpt: "About me"
 author_profile: true
 redirect_from:
@@ -10,9 +10,7 @@ redirect_from:
 
 Hi, I'm **Md. Shahariar Hassan Ronok**, an Electrical and Computer Engineering graduate from <a href="https://www.ruet.ac.bd/" target="_blank" rel="noopener noreferrer">Rajshahi University of Engineering & Technology (RUET)</a>.
 
-I enjoy working on problems where hardware and software come together. I am especially interested in high-speed networking, computer architecture, embedded systems, digital hardware, and hardware verification.
-
-What I enjoy most is understanding how a system works at a lower level and then finding practical ways to make it faster, more reliable, and more efficient. I also enjoy building and testing real systems rather than working only with theory.
+I am particularly interested in research at the intersection of **hardware and software**, with a focus on **high-speed networking, computer architecture, embedded systems, digital hardware, and hardware verification**. My research interests center on understanding systems at a low level and exploring practical approaches to improve their **performance, reliability, and efficiency**. I am especially motivated by work that combines theoretical understanding with the **design, implementation, testing, and evaluation of real-world systems**.
 
 ## Research Interests
 
@@ -170,7 +168,10 @@ What I enjoy most is understanding how a system works at a lower level and then 
 <a href="https://verilator.org/guide/latest/" target="_blank" rel="noopener noreferrer">**Siliconova Ltd.**</a>, Dhaka, Bangladesh  
 July 2024 – Present
 
-As an embedded software engineer, I work on software that interacts closely with hardware. This has helped me gain practical experience in low-level programming, system performance, networking, and embedded system development.
+
+In my role as an **Embedded Software Engineer**, I develop high-speed communication systems using <a href="https://www.dpdk.org/" target="_blank"><strong>DPDK (Data Plane Development Kit)</strong></a>, <a href="https://www.amd.com/en/products/adaptive-socs-and-fpgas/fpga.html" target="_blank"><strong>FPGA (Field-Programmable Gate Array)</strong></a>-based <a href="https://en.wikipedia.org/wiki/Software-defined_radio" target="_blank"><strong>SDR (Software-Defined Radio)</strong></a>, and Linux. My work mainly supports **6G research platforms**, where I build high-throughput data pipelines between host servers and FPGA-based SDR systems, validate **100 Gbps or higher throughput with zero packet loss**, and use <a href="https://www.intel.com/content/www/us/en/developer/tools/oneapi/vtune-profiler.html" target="_blank"><strong>Intel VTune Profiler</strong></a> to analyze CPU utilization, memory behavior, threading, and performance bottlenecks for further system optimization. I also develop telemetry tools for anomaly monitoring, collaborate with U.S.-based engineering teams on integration and debugging, and create automated testing, performance optimization, software licensing, and technical documentation for final delivery.
+
+
 
 ## What I'm Interested In
 

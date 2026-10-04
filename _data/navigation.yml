@@ -14,8 +14,11 @@ main:
   - title: "Systems & Networking"
     url: /systems/
 
-  - title: "VLSI & Microarchitecture"
+  - title: "VLSI"
     url: /vlsi/
+
+  - title: "Co-curricular Activities"
+    url: /activities/
 
   - title: "CV"
     url: /cv/
