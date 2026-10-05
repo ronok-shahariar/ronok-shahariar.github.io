@@ -1,0 +1,960 @@
+---
+layout: default
+---
+
+<style>
+  .portfolio-home {
+    width: 100%;
+    max-width: 1180px;
+    margin: 0 auto;
+    overflow-x: clip;
+    padding: 20px 32px 80px;
+  }
+
+  .portfolio-home * {
+    box-sizing: border-box;
+  }
+
+  /* ---------------- Hero ---------------- */
+
+  .portfolio-hero {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr) 210px;
+    gap: 64px;
+    align-items: center;
+    min-height: 360px;
+    padding: 20px 0 55px;
+  }
+
+  .portfolio-eyebrow {
+    margin: 0 0 14px;
+    font-size: 0.82rem;
+    font-weight: 700;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    opacity: 0.62;
+  }
+
+  .portfolio-hero h1 {
+    margin: 0;
+    max-width: 850px;
+    font-size: clamp(2.6rem, 5vw, 4.8rem);
+    line-height: 1.04;
+    letter-spacing: -0.045em;
+    font-weight: 750;
+  }
+
+  .portfolio-role {
+    margin: 22px 0 0;
+    font-size: clamp(1.15rem, 2vw, 1.5rem);
+    line-height: 1.55;
+    font-weight: 500;
+    opacity: 0.82;
+  }
+
+  .portfolio-intro {
+    max-width: 790px;
+    margin: 20px 0 0;
+    font-size: 1.02rem;
+    line-height: 1.8;
+    opacity: 0.74;
+  }
+
+  .portfolio-actions {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 11px;
+    margin-top: 30px;
+  }
+
+  .portfolio-btn {
+    display: inline-flex;
+    align-items: center;
+    gap: 8px;
+    padding: 10px 16px;
+    border: 1px solid rgba(128,128,128,0.32);
+    border-radius: 8px;
+    text-decoration: none !important;
+    color: inherit !important;
+    font-size: 0.91rem;
+    font-weight: 600;
+    transition: transform 0.18s ease, border-color 0.18s ease,
+                background 0.18s ease;
+  }
+
+  .portfolio-btn:hover {
+    transform: translateY(-2px);
+    background: rgba(128,128,128,0.08);
+    border-color: rgba(128,128,128,0.5);
+  }
+
+  .portfolio-btn.primary {
+    background: #2f9fc4;
+    border-color: #2f9fc4;
+    color: #fff !important;
+  }
+
+  .portfolio-btn.primary:hover {
+    background: #278db0;
+  }
+
+  .portfolio-photo-wrap {
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+  }
+
+  .portfolio-photo {
+    width: 300px;
+    height: auto;
+    display: block;
+    border-radius: 10px;
+    border: 1px solid rgba(128,128,128,0.16);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.10);
+  }
+
+
+  /* ---------------- General sections ---------------- */
+
+  .portfolio-section {
+    padding: 68px 0;
+    border-top: 1px solid rgba(128,128,128,0.18);
+  }
+
+  .portfolio-section-soft {
+    position: relative;
+  }
+
+  .portfolio-section-soft::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: rgba(128,128,128,0.055);
+    z-index: -1;
+  }
+
+  .portfolio-section-accent {
+    position: relative;
+  }
+
+  .portfolio-section-accent::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 50%;
+    width: 100vw;
+    transform: translateX(-50%);
+    background: rgba(47,159,196,0.065);
+    z-index: -1;
+  }
+
+  .portfolio-section-heading {
+    display: grid;
+    grid-template-columns: 180px minmax(0, 1fr);
+    gap: 45px;
+  }
+
+  .portfolio-section-label {
+    margin: 4px 0 0;
+    font-size: 0.78rem;
+    font-weight: 700;
+    letter-spacing: 0.13em;
+    text-transform: uppercase;
+    opacity: 0.52;
+  }
+
+  .portfolio-section-content h2 {
+    margin: 0 0 20px;
+    font-size: clamp(1.8rem, 3vw, 2.45rem);
+    line-height: 1.18;
+    letter-spacing: -0.025em;
+  }
+
+  .portfolio-section-content > p {
+    max-width: 820px;
+    line-height: 1.85;
+    font-size: 1.02rem;
+    opacity: 0.80;
+  }
+
+
+  /* ---------------- Highlight strip ---------------- */
+
+  .portfolio-highlights {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    overflow: hidden;
+    margin: 0 0 65px;
+    border: 1px solid rgba(128,128,128,0.20);
+    border-radius: 10px;
+    background: rgba(128,128,128,0.20);
+  }
+
+  .portfolio-highlight {
+    padding: 20px 22px;
+    background: var(--global-bg-color, #fff);
+  }
+
+  .portfolio-highlight strong {
+    display: block;
+    margin-bottom: 5px;
+    font-size: 1.02rem;
+  }
+
+  .portfolio-highlight span {
+    display: block;
+    line-height: 1.45;
+    font-size: 0.84rem;
+    opacity: 0.65;
+  }
+
+
+  /* ---------------- Research cards ---------------- */
+
+  .portfolio-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 16px;
+    margin-top: 30px;
+  }
+
+  .portfolio-card {
+    padding: 22px;
+    border: 1px solid rgba(128,128,128,0.22);
+    border-radius: 10px;
+    background: rgba(128,128,128,0.035);
+  }
+
+  .portfolio-card-icon {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 38px;
+    height: 38px;
+    margin-bottom: 16px;
+    border: 1px solid rgba(128,128,128,0.22);
+    border-radius: 8px;
+    font-size: 0.95rem;
+  }
+
+  .portfolio-card h3 {
+    margin: 0 0 9px;
+    font-size: 1.05rem;
+  }
+
+  .portfolio-card p {
+    margin: 0;
+    font-size: 0.91rem;
+    line-height: 1.7;
+    opacity: 0.72;
+  }
+
+
+  /* ---------------- Experience / education ---------------- */
+
+  .portfolio-timeline-item {
+    position: relative;
+    padding: 0 0 34px 27px;
+    border-left: 1px solid rgba(128,128,128,0.25);
+  }
+
+  .portfolio-timeline-item:last-child {
+    padding-bottom: 0;
+  }
+
+  .portfolio-timeline-item::before {
+    content: "";
+    position: absolute;
+    left: -5px;
+    top: 7px;
+    width: 9px;
+    height: 9px;
+    border-radius: 50%;
+    background: #2f9fc4;
+  }
+
+  .portfolio-time {
+    margin-bottom: 6px;
+    font-size: 0.82rem;
+    font-weight: 600;
+    opacity: 0.60;
+  }
+
+  .portfolio-timeline-item h3 {
+    margin: 0 0 5px;
+    font-size: 1.16rem;
+  }
+
+  .portfolio-subtitle {
+    margin: 0 0 12px;
+    font-size: 0.93rem;
+    opacity: 0.67;
+  }
+
+  .portfolio-timeline-item p {
+    margin-bottom: 0;
+    max-width: 800px;
+    font-size: 0.94rem;
+    line-height: 1.75;
+    opacity: 0.76;
+  }
+
+
+  /* ---------------- Skills ---------------- */
+
+  .portfolio-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 9px;
+    margin-top: 25px;
+  }
+
+  .portfolio-tag {
+    padding: 8px 12px;
+    border: 1px solid rgba(128,128,128,0.24);
+    border-radius: 999px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    background: rgba(128,128,128,0.045);
+  }
+
+
+  /* ---------------- Projects ---------------- */
+
+  .portfolio-projects {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+    gap: 18px;
+    margin-top: 30px;
+  }
+
+  .portfolio-project {
+    display: block;
+    padding: 24px;
+    border: 1px solid rgba(128,128,128,0.22);
+    border-radius: 10px;
+    text-decoration: none !important;
+    color: inherit !important;
+    background: rgba(128,128,128,0.035);
+    transition: transform 0.18s ease, border-color 0.18s ease;
+  }
+
+  .portfolio-project:hover {
+    transform: translateY(-3px);
+    border-color: rgba(47,159,196,0.65);
+  }
+
+  .portfolio-project-type {
+    display: block;
+    margin-bottom: 9px;
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    opacity: 0.50;
+  }
+
+  .portfolio-project h3 {
+    margin: 0 0 10px;
+    font-size: 1.08rem;
+    line-height: 1.4;
+  }
+
+  .portfolio-project p {
+    margin: 0;
+    font-size: 0.89rem;
+    line-height: 1.65;
+    opacity: 0.68;
+  }
+
+
+  /* ---------------- End CTA ---------------- */
+
+  .portfolio-cta {
+    padding: 70px 0 20px;
+    text-align: center;
+    border-top: 1px solid rgba(128,128,128,0.18);
+  }
+
+  .portfolio-cta h2 {
+    margin-bottom: 12px;
+    font-size: 2rem;
+  }
+
+  .portfolio-cta p {
+    max-width: 620px;
+    margin: 0 auto;
+    line-height: 1.7;
+    opacity: 0.70;
+  }
+
+  .portfolio-cta .portfolio-actions {
+    justify-content: center;
+  }
+
+
+  /* ---------------- Responsive ---------------- */
+
+  @media (max-width: 900px) {
+    .portfolio-home {
+      padding: 48px 24px 65px;
+    }
+
+    .portfolio-hero {
+      grid-template-columns: 1fr;
+      gap: 30px;
+      padding-top: 25px;
+    }
+
+    .portfolio-photo-wrap {
+      grid-row: 1;
+      justify-content: flex-start;
+    }
+
+    .portfolio-photo {
+      width: 130px;
+      height: 130px;
+    }
+
+    .portfolio-section-heading {
+      grid-template-columns: 1fr;
+      gap: 14px;
+    }
+
+    .portfolio-highlights {
+      grid-template-columns: repeat(2, 1fr);
+    }
+  }
+
+  @media (max-width: 620px) {
+    .portfolio-home {
+      padding-left: 18px;
+      padding-right: 18px;
+    }
+
+    .portfolio-hero {
+      min-height: auto;
+      padding-bottom: 50px;
+    }
+
+    .portfolio-hero h1 {
+      font-size: 2.65rem;
+    }
+
+    .portfolio-grid,
+    .portfolio-projects,
+    .portfolio-highlights {
+      grid-template-columns: 1fr;
+    }
+
+    .portfolio-section {
+      padding: 50px 0;
+    }
+
+    .portfolio-actions {
+      gap: 8px;
+    }
+
+    .portfolio-btn {
+      width: 100%;
+      justify-content: center;
+    }
+  }
+
+  /* ---------------- Homepage Cover ---------------- */
+
+  .ronok-home-cover {
+    width: 100%;
+    height: 380px;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    display: block;
+  }
+
+  .ronok-home-cover img {
+    width: 100%;
+    height: 100%;
+    display: block;
+    object-fit: cover;
+    object-position: center center;
+    margin: 0;
+    padding: 0;
+  }
+
+  @media (max-width: 900px) {
+    .ronok-home-cover {
+      height: 280px;
+    }
+  }
+
+  @media (max-width: 620px) {
+    .ronok-home-cover {
+      height: 220px;
+    }
+  }
+
+</style>
+
+
+
+
+
+<main class="portfolio-home">
+
+  <!-- TOP COVER -->
+  <div style="
+  width:100%;
+  height:380px;
+  overflow:hidden;
+  margin:0;
+  padding:0;
+">
+  <img
+    src="{{ '/images/portfolio-cover.png' | relative_url }}?v=3"
+    alt="Satellite communications network around Earth"
+    style="
+      display:block;
+      width:100%;
+      height:380px;
+      max-width:none;
+      object-fit:cover;
+      object-position:center center;
+      margin:0;
+      padding:0;
+    "
+  />
+</div>
+
+
+
+  <!-- HERO -->
+  <section class="portfolio-hero">
+
+    <div>
+      <p class="portfolio-eyebrow">
+        Embedded Systems · High-Speed Networking · Computer Architecture
+      </p>
+
+      <h1>
+        Md. Shahariar Hassan Ronok
+      </h1>
+
+      <p class="portfolio-role">
+        Embedded Software Engineer working across
+        <strong>high-performance networking, FPGA systems, SDR platforms,
+        processor architecture, and hardware verification.</strong>
+      </p>
+
+      <p class="portfolio-intro">
+        I build and study systems where software meets hardware — from
+        high-throughput DPDK data planes and FPGA-based communication platforms
+        to RISC-V processors and automated hardware verification.
+      </p>
+
+      <div class="portfolio-actions">
+
+        <a class="portfolio-btn primary" href="{{ '/projects/' | relative_url }}">
+          <i class="fas fa-code"></i>
+          View Projects
+        </a>
+
+        <a class="portfolio-btn" href="{{ '/cv/' | relative_url }}">
+          <i class="fas fa-file-lines"></i>
+          CV
+        </a>
+
+        <a class="portfolio-btn"
+           href="{{ site.author.github }}"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i class="fab fa-github"></i>
+          GitHub
+        </a>
+
+        <a class="portfolio-btn"
+           href="{{ site.author.linkedin }}"
+           target="_blank"
+           rel="noopener noreferrer">
+          <i class="fab fa-linkedin"></i>
+          LinkedIn
+        </a>
+
+      </div>
+    </div>
+
+    <div class="portfolio-photo-wrap">
+      <img
+        class="portfolio-photo"
+        src="{{ '/images/profile.jpg' | relative_url }}"
+        alt="Md. Shahariar Hassan Ronok"
+        fetchpriority="high"
+      />
+    </div>
+
+  </section>
+
+
+  <!-- QUICK OVERVIEW -->
+  <section class="portfolio-highlights">
+
+    <div class="portfolio-highlight">
+      <strong>100 Gbps</strong>
+      <span>Zero-loss high-throughput packet-processing validation</span>
+    </div>
+
+    <div class="portfolio-highlight">
+      <strong>DPDK + FPGA</strong>
+      <span>High-speed software/hardware data pipelines</span>
+    </div>
+
+    <div class="portfolio-highlight">
+      <strong>RISC-V</strong>
+      <span>Processor pipelines, forwarding and hazard handling</span>
+    </div>
+
+    <div class="portfolio-highlight">
+      <strong>RUET</strong>
+      <span>B.Sc. in Electrical &amp; Computer Engineering</span>
+    </div>
+
+  </section>
+
+
+  <!-- ABOUT -->
+  <section class="portfolio-section" id="about">
+
+    <div class="portfolio-section-heading">
+
+      <p class="portfolio-section-label">About</p>
+
+      <div class="portfolio-section-content">
+
+        <h2>
+          Engineering systems from the hardware layer to high-performance software.
+        </h2>
+
+        <p>
+          I am an Electrical and Computer Engineering graduate from
+          <a href="https://www.ruet.ac.bd/"
+             target="_blank"
+             rel="noopener noreferrer">
+            Rajshahi University of Engineering &amp; Technology (RUET)
+          </a>.
+          My interests sit at the intersection of hardware and software,
+          particularly high-speed networking, embedded systems, computer
+          architecture, FPGA-based systems, and hardware verification.
+        </p>
+
+        <p>
+          I enjoy understanding systems at a low level and turning that
+          understanding into practical implementations that improve
+          performance, reliability, and efficiency.
+        </p>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- RESEARCH -->
+  <section class="portfolio-section portfolio-section-soft">
+
+    <div class="portfolio-section-heading">
+
+      <p class="portfolio-section-label">Research</p>
+
+      <div class="portfolio-section-content">
+
+        <h2>Research &amp; engineering interests</h2>
+
+        <div class="portfolio-grid">
+
+          <div class="portfolio-card">
+            <div class="portfolio-card-icon">
+              <i class="fas fa-network-wired"></i>
+            </div>
+            <h3>High-Speed Networking</h3>
+            <p>
+              DPDK, HugePages, CPU isolation, zero-copy processing,
+              lockless data paths, and low-latency packet pipelines.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-card-icon">
+              <i class="fas fa-microchip"></i>
+            </div>
+            <h3>Computer Architecture</h3>
+            <p>
+              RISC-V processors, pipelined datapaths, RAW hazard handling,
+              forwarding logic, and processor implementation.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-card-icon">
+              <i class="fas fa-memory"></i>
+            </div>
+            <h3>FPGA &amp; Digital Systems</h3>
+            <p>
+              RTL implementation, Artix-7 platforms, hardware/software
+              co-design, digital data paths, and FPGA-host communication.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-card-icon">
+              <i class="fas fa-flask"></i>
+            </div>
+            <h3>Hardware Verification</h3>
+            <p>
+              Cocotb, Verilator, automated regression testing,
+              cycle-accurate validation, and CI-oriented verification.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-card-icon">
+              <i class="fas fa-satellite-dish"></i>
+            </div>
+            <h3>Software-Defined Radio</h3>
+            <p>
+              FPGA-based SDR platforms, RF data acquisition,
+              telemetry pipelines, multi-channel streaming, and automation.
+            </p>
+          </div>
+
+          <div class="portfolio-card">
+            <div class="portfolio-card-icon">
+              <i class="fas fa-shield-halved"></i>
+            </div>
+            <h3>Wireless Communication Security</h3>
+            <p>
+              Physical-layer security, secrecy performance,
+              stochastic wireless networks, and Poisson Point Process models.
+            </p>
+          </div>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EXPERIENCE -->
+  <section class="portfolio-section">
+
+    <div class="portfolio-section-heading">
+
+      <p class="portfolio-section-label">Experience</p>
+
+      <div class="portfolio-section-content">
+
+        <h2>Professional experience</h2>
+
+        <div class="portfolio-timeline-item">
+
+          <div class="portfolio-time">July 2024 — Present</div>
+
+          <h3>Embedded Software Engineer I</h3>
+
+          <p class="portfolio-subtitle">
+            Siliconova Ltd. · Dhaka, Bangladesh
+          </p>
+
+          <p>
+            Developing high-speed communication and embedded systems using
+            C, Linux, DPDK, FPGA-based SDR platforms, POSIX shared memory,
+            gRPC services, telemetry infrastructure, and system-level
+            performance profiling. My work includes sustained high-throughput
+            data-plane validation, automated testing, debugging, integration,
+            and optimization of production-oriented telecommunications systems.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- EDUCATION -->
+  <section class="portfolio-section portfolio-section-soft">
+
+    <div class="portfolio-section-heading">
+
+      <p class="portfolio-section-label">Education</p>
+
+      <div class="portfolio-section-content">
+
+        <h2>Academic background</h2>
+
+        <div class="portfolio-timeline-item">
+
+          <div class="portfolio-time">2018 — 2023</div>
+
+          <h3>B.Sc. in Electrical &amp; Computer Engineering</h3>
+
+          <p class="portfolio-subtitle">
+            Rajshahi University of Engineering &amp; Technology (RUET)
+          </p>
+
+          <p>
+            Undergraduate thesis:
+            <strong>
+              Analyzing Secrecy Performance in Wireless Communication Networks
+              with Randomly Distributed Eavesdroppers
+            </strong>.
+            Supervised by Milton Kumar Kundu.
+          </p>
+
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- TECH -->
+  <section class="portfolio-section">
+
+    <div class="portfolio-section-heading">
+
+      <p class="portfolio-section-label">Technologies</p>
+
+      <div class="portfolio-section-content">
+
+        <h2>Tools &amp; technical areas</h2>
+
+        <div class="portfolio-tags">
+          <span class="portfolio-tag">C</span>
+          <span class="portfolio-tag">Linux</span>
+          <span class="portfolio-tag">DPDK</span>
+          <span class="portfolio-tag">HugePages</span>
+          <span class="portfolio-tag">POSIX Shared Memory</span>
+          <span class="portfolio-tag">FPGA</span>
+          <span class="portfolio-tag">Verilog RTL</span>
+          <span class="portfolio-tag">RISC-V</span>
+          <span class="portfolio-tag">PicoRV32</span>
+          <span class="portfolio-tag">Cocotb</span>
+          <span class="portfolio-tag">Verilator</span>
+          <span class="portfolio-tag">Vivado</span>
+          <span class="portfolio-tag">gRPC</span>
+          <span class="portfolio-tag">Python</span>
+          <span class="portfolio-tag">SDR</span>
+          <span class="portfolio-tag">Prometheus</span>
+          <span class="portfolio-tag">Grafana</span>
+          <span class="portfolio-tag">Intel VTune</span>
+          <span class="portfolio-tag">Docker</span>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- SELECTED PROJECTS -->
+  <section class="portfolio-section portfolio-section-soft">
+
+    <div class="portfolio-section-heading">
+
+      <p class="portfolio-section-label">Selected Work</p>
+
+      <div class="portfolio-section-content">
+
+        <h2>Selected engineering projects</h2>
+
+        <div class="portfolio-projects">
+
+          {% assign selected_projects = site.portfolio | sort: "date" | reverse %}
+
+          {% for project in selected_projects limit: 4 %}
+
+            <a
+              class="portfolio-project"
+              href="{{ project.url | relative_url }}"
+            >
+
+              <span class="portfolio-project-type">
+                {{ project.type | default: "Project" }}
+              </span>
+
+              <h3>{{ project.title }}</h3>
+
+              {% if project.excerpt %}
+                <p>
+                  {{ project.excerpt | strip_html | strip_newlines | truncate: 160 }}
+                </p>
+              {% endif %}
+
+            </a>
+
+          {% endfor %}
+
+        </div>
+
+        <div class="portfolio-actions">
+          <a class="portfolio-btn" href="{{ '/projects/' | relative_url }}">
+            View all projects
+            <i class="fas fa-arrow-right"></i>
+          </a>
+        </div>
+
+      </div>
+
+    </div>
+
+  </section>
+
+
+  <!-- CONTACT -->
+  <section class="portfolio-cta portfolio-section-accent">
+
+    <h2>Research, systems, and engineering.</h2>
+
+    <p>
+      I am interested in opportunities involving high-performance systems,
+      embedded computing, computer architecture, FPGA development,
+      and hardware-software co-design.
+    </p>
+
+    <div class="portfolio-actions">
+
+      <a
+        class="portfolio-btn primary"
+        href="mailto:{{ site.author.email }}"
+      >
+        <i class="fas fa-envelope"></i>
+        Contact Me
+      </a>
+
+      <a
+        class="portfolio-btn"
+        href="{{ '/cv/' | relative_url }}"
+      >
+        View CV
+      </a>
+
+    </div>
+
+  </section>
+
+</main>
