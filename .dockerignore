@@ -1,0 +1,8 @@
+.git
+.github
+_site
+.bundle
+vendor
+node_modules
+.DS_Store
+*.log

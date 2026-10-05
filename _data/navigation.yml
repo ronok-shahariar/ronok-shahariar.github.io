@@ -11,11 +11,8 @@ main:
   - title: "Thesis & Reports"
     url: /publications/
 
-  - title: "Systems & Networking"
-    url: /systems/
-
-  - title: "VLSI"
-    url: /vlsi/
+  - title: "My Projects"
+    url: /projects/
 
   - title: "Co-curricular Activities"
     url: /activities/

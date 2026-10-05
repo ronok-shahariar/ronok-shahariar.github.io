@@ -43,11 +43,6 @@ breadcrumbs              : false
 words_per_minute         : 160
 future                   : true
 read_more                : "disabled"
-talkmap_link             : false
-
-atom_feed:
-  hide                   : true     # Hides RSS feed in footer
-  path                   :
 
 # Reading Files
 include:
@@ -110,33 +105,15 @@ kramdown:
 
 # Collections
 collections:
-  teaching:
-    output: true
-    permalink: /:collection/:path/
   publications:
     output: true
     permalink: /:collection/:path/
   portfolio:
     output: true
     permalink: /:collection/:path/
-  talks:
-    output: true
-    permalink: /:collection/:path/
 
-# Collection Defaults (Social Share disabled everywhere)
+# Collection Defaults
 defaults:
-  # _posts
-  - scope:
-      path: ""
-      type: posts
-    values:
-      layout: single
-      author_profile: true
-      read_time: true
-      comments: false
-      share: false
-      related: false
-
   # _pages
   - scope:
       path: ""
@@ -144,17 +121,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: false
-
-  # _teaching
-  - scope:
-      path: ""
-      type: teaching
-    values:
-      layout: single
-      author_profile: true
-      share: false
-      comments: false
 
   # _publications
   - scope:
@@ -163,8 +129,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: false
-      comments: false
 
   # _portfolio
   - scope:
@@ -173,17 +137,6 @@ defaults:
     values:
       layout: single
       author_profile: true
-      share: false
-      comments: false
-
-  # _talks
-  - scope:
-      path: ""
-      type: talks
-    values:
-      layout: talk
-      author_profile: true
-      share: false
 
 # Sass/SCSS
 sass:
@@ -196,28 +149,13 @@ timezone: Etc/UTC
 
 # Plugins
 plugins:
-  - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
-  - jemoji
 
 whitelist:
-  - jekyll-feed
-  - jekyll-gist
-  - jekyll-paginate
   - jekyll-sitemap
   - jekyll-redirect-from
-  - jemoji
 
-# Archives
-category_archive:
-  type: liquid
-  path: /categories/
-tag_archive:
-  type: liquid
-  path: /tags/
 
 # HTML Compression
 compress_html:
