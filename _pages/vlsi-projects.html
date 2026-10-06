@@ -1,0 +1,236 @@
+---
+layout: default
+title: "VLSI & Digital Hardware Projects"
+permalink: /vlsi-projects/
+author_profile: true
+---
+
+<style>
+
+.vlsi-projects-page {
+  max-width: 1100px;
+  margin: 0 auto;
+  padding: 58px 28px 90px;
+}
+
+.vlsi-projects-intro {
+  max-width: 760px;
+  margin-bottom: 36px;
+}
+
+.vlsi-projects-label {
+  margin: 0 0 8px;
+
+  color: #9aa0a6;
+
+  font-size: 0.72rem;
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.vlsi-projects-intro h1 {
+  margin: 0 0 14px;
+
+  font-size: clamp(2rem, 3.5vw, 3.2rem);
+  line-height: 1.1;
+
+  letter-spacing: -0.03em;
+}
+
+.vlsi-projects-intro p {
+  margin: 0;
+
+  color: #777d83;
+
+  font-size: 0.96rem;
+  line-height: 1.7;
+}
+
+.vlsi-project-grid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 18px;
+}
+
+.vlsi-project-card {
+  display: flex;
+  flex-direction: column;
+
+  min-height: 220px;
+
+  padding: 22px;
+
+  border: 1px solid rgba(128,128,128,0.20);
+  border-radius: 10px;
+
+  background: rgba(128,128,128,0.025);
+
+  transition:
+    transform 0.18s ease,
+    border-color 0.18s ease,
+    box-shadow 0.18s ease;
+}
+
+.vlsi-project-card:hover {
+  transform: translateY(-2px);
+
+  border-color: rgba(47,159,196,0.38);
+
+  box-shadow: 0 8px 24px rgba(0,0,0,0.05);
+}
+
+.vlsi-project-type {
+  margin-bottom: 10px;
+
+  color: #9aa0a6;
+
+  font-size: 0.68rem;
+  font-weight: 700;
+
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+}
+
+.vlsi-project-card h2 {
+  margin: 0 0 10px;
+
+  font-size: 1.18rem;
+  line-height: 1.4;
+}
+
+.vlsi-project-card h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.vlsi-project-card h2 a:hover {
+  color: #2f9fc7;
+}
+
+.vlsi-project-card p {
+  margin: 0;
+
+  color: #747a80;
+
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.vlsi-project-link {
+  display: inline-block;
+
+  width: fit-content;
+
+  margin-top: auto;
+  padding-top: 18px;
+
+  color: #2f9fc7;
+
+  font-size: 0.82rem;
+  font-weight: 700;
+
+  text-decoration: none;
+}
+
+.vlsi-project-link:hover {
+  text-decoration: underline;
+}
+
+.vlsi-projects-footer-note {
+  margin: 34px 0 0;
+
+  color: #92979c;
+
+  font-size: 0.8rem;
+  line-height: 1.6;
+}
+
+@media (max-width: 720px) {
+
+  .vlsi-projects-page {
+    padding: 42px 20px 70px;
+  }
+
+  .vlsi-project-grid {
+    grid-template-columns: 1fr;
+  }
+
+}
+
+</style>
+
+
+<div class="vlsi-projects-page">
+
+  <header class="vlsi-projects-intro">
+
+    <p class="vlsi-projects-label">
+      VLSI &amp; DIGITAL HARDWARE
+    </p>
+
+    <h1>
+      VLSI &amp; Digital Hardware Projects
+    </h1>
+
+    <p>
+      Selected work in RTL design, digital architecture, processor pipelines,
+      and hardware verification.
+    </p>
+
+  </header>
+
+
+  {% assign vlsi_projects = site.portfolio
+    | where: "type", "vlsi"
+    | sort: "date"
+    | reverse
+  %}
+
+  <div class="vlsi-project-grid">
+
+    {% for post in vlsi_projects %}
+
+      <article class="vlsi-project-card">
+
+        <div class="vlsi-project-type">
+          VLSI Project
+        </div>
+
+        <h2>
+          <a
+            href="{{ post.url | relative_url }}"
+            target="_blank"
+            rel="noopener noreferrer">
+            {{ post.title }}
+          </a>
+        </h2>
+
+        {% if post.excerpt %}
+          <p>
+            {{ post.excerpt | strip_html | strip }}
+          </p>
+        {% endif %}
+
+        <a
+          href="{{ post.url | relative_url }}"
+          class="vlsi-project-link"
+          target="_blank"
+          rel="noopener noreferrer">
+          View Project
+        </a>
+
+      </article>
+
+    {% endfor %}
+
+  </div>
+
+
+  <p class="vlsi-projects-footer-note">
+    More VLSI and digital hardware projects will be added as this work develops.
+  </p>
+
+</div>

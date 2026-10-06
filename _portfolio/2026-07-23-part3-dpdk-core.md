@@ -7,12 +7,6 @@ classes: wide
 excerpt: "Core user-space ingestion engine: C, DPDK Poll Mode Drivers, HugePages memory management, POSIX shared memory, and non-blocking sequence locks."
 ---
 
-<div style="margin: 15px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/Secondary-gRPC/introduction" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="padding: 10px 18px; text-decoration: none; border-radius: 6px;">
-    <i class="fas fa-external-link-alt"></i> View Detailed DPDK Core & Seqlock Docs
-  </a>
-</div>
-
 
 
 # Part 3: High-Speed DPDK Telemetry Data Plane

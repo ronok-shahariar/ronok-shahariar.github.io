@@ -7,11 +7,6 @@ classes: wide
 excerpt: "Real-time network and system health metrics: gRPC-based telemetry daemon, custom Prometheus exporter, and interactive Grafana dashboards."
 ---
 
-<div style="margin: 15px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/Grafana-Prometheus/Introductions" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="padding: 10px 18px; text-decoration: none; border-radius: 6px;">
-    <i class="fas fa-external-link-alt"></i> View Detailed Telemetry Pipeline & Grafana Docs
-  </a>
-</div>
 
 
 # Part 4: Real-Time Telemetry & Observability

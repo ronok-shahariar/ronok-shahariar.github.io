@@ -7,16 +7,6 @@ classes: wide
 excerpt: "Automated RF instrumentation and control through a VISA/SCPI-to-gRPC bridge, enabling LabVIEW, NI MAX, and Python/PyVISA clients to operate modern gRPC-based RF services over TCP/IP."
 ---
 
-<div style="margin: 15px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/LabVIEW-gRPC-VISA/introduction"
-     target="_blank"
-     rel="noopener noreferrer"
-     class="btn btn--primary"
-     style="padding: 10px 18px; text-decoration: none; border-radius: 6px;">
-    <i class="fas fa-external-link-alt"></i>
-    View Detailed Control & SCPI Docs
-  </a>
-</div>
 
 # Part 2: Instrumentation & Control Plane
 
