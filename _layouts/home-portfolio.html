@@ -204,7 +204,7 @@ layout: default
 
   .portfolio-highlights {
     display: grid;
-    grid-template-columns: repeat(4, 1fr);
+    grid-template-columns: repeat(3, 1fr);
     gap: 1px;
     overflow: hidden;
     margin: 0 0 65px;
@@ -794,6 +794,56 @@ layout: default
     }
   }
 
+
+/* ===== Activity slider override ===== */
+#activities-preview .activity-slider-btn {
+  display: none !important;
+}
+
+#activities-preview .activity-slider {
+  overflow: hidden;
+}
+
+#activities-preview .activity-slider-viewport {
+  overflow: hidden;
+  border-radius: 22px;
+}
+
+#activities-preview .activity-slider-track {
+  display: flex;
+}
+
+#activities-preview .activity-slide {
+  min-width: 100%;
+  box-sizing: border-box;
+}
+
+#activities-preview .activity-slide img {
+  display: block;
+  width: 100%;
+  height: 560px;
+  object-fit: cover;
+  border-radius: 0;
+  margin: 0;
+}
+
+#activities-preview .activity-slide-caption {
+  padding: 20px 24px 26px;
+}
+
+@media (max-width: 900px) {
+  #activities-preview .activity-slide img {
+    height: 420px;
+  }
+}
+
+@media (max-width: 620px) {
+  #activities-preview .activity-slide img {
+    height: 280px;
+  }
+}
+
+
 </style>
 
 
@@ -886,10 +936,6 @@ layout: default
       <span>Processor pipelines, forwarding and hazard handling</span>
     </div>
 
-    <div class="portfolio-highlight">
-      <strong>RUET</strong>
-      <span>B.Sc. in Electrical &amp; Computer Engineering</span>
-    </div>
 
   </section>
 
@@ -903,26 +949,8 @@ layout: default
 
       <div class="portfolio-section-content">
 
-        <h2>
-          Engineering systems from the hardware layer to high-performance software.
-        </h2>
-
-        <p>
-          I am an Electrical and Computer Engineering graduate from
-          <a href="https://www.ruet.ac.bd/"
-             target="_blank"
-             rel="noopener noreferrer">
-            Rajshahi University of Engineering &amp; Technology (RUET)
-          </a>.
-          My interests sit at the intersection of hardware and software,
-          particularly high-speed networking, embedded systems, computer
-          architecture, FPGA-based systems, and hardware verification.
-        </p>
-
-        <p>
-          I enjoy understanding systems at a low level and turning that
-          understanding into practical implementations that improve
-          performance, reliability, and efficiency.
+        <p style="margin:0;">
+          I am an Embedded Software Engineer at Siliconova Ltd. with a B.Sc. in Electrical &amp; Computer Engineering (ECE) from Rajshahi University of Engineering & Technology (RUET), Bangladesh. My interest in wireless communication began through my undergraduate research and projects and has since expanded into embedded systems, high-speed networking, Software-Defined Radio (SDR), FPGA-based systems, and hardware-software co-design. At Siliconova, I contribute to 6G-oriented telecommunications systems, working on system architecture, data pipelines, testing, performance optimization, and collaboration with U.S.-based engineering teams. I am also strongly interested in learning emerging technologies from the ground up so I can understand their core structure and apply them effectively when developing new ideas and practical solutions.
         </p>
 
       </div>
@@ -933,209 +961,275 @@ layout: default
 
 
   <!-- RESEARCH -->
-  <section class="portfolio-section portfolio-section-soft">
-
-    <div class="portfolio-section-heading">
-
-      <p class="portfolio-section-label">Research</p>
-
-      <div class="portfolio-section-content">
-
-        <h2>Research &amp; engineering interests</h2>
-
-        <div class="portfolio-grid">
-
-          <div class="portfolio-card">
-            <div class="portfolio-card-icon">
-              <i class="fas fa-network-wired"></i>
-            </div>
-            <h3>High-Speed Networking</h3>
-            <p>
-              DPDK, HugePages, CPU isolation, zero-copy processing,
-              lockless data paths, and low-latency packet pipelines.
-            </p>
-          </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-card-icon">
-              <i class="fas fa-microchip"></i>
-            </div>
-            <h3>Computer Architecture</h3>
-            <p>
-              RISC-V processors, pipelined datapaths, RAW hazard handling,
-              forwarding logic, and processor implementation.
-            </p>
-          </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-card-icon">
-              <i class="fas fa-memory"></i>
-            </div>
-            <h3>FPGA &amp; Digital Systems</h3>
-            <p>
-              RTL implementation, Artix-7 platforms, hardware/software
-              co-design, digital data paths, and FPGA-host communication.
-            </p>
-          </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-card-icon">
-              <i class="fas fa-flask"></i>
-            </div>
-            <h3>Hardware Verification</h3>
-            <p>
-              Cocotb, Verilator, automated regression testing,
-              cycle-accurate validation, and CI-oriented verification.
-            </p>
-          </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-card-icon">
-              <i class="fas fa-satellite-dish"></i>
-            </div>
-            <h3>Software-Defined Radio</h3>
-            <p>
-              FPGA-based SDR platforms, RF data acquisition,
-              telemetry pipelines, multi-channel streaming, and automation.
-            </p>
-          </div>
-
-          <div class="portfolio-card">
-            <div class="portfolio-card-icon">
-              <i class="fas fa-shield-halved"></i>
-            </div>
-            <h3>Wireless Communication Security</h3>
-            <p>
-              Physical-layer security, secrecy performance,
-              stochastic wireless networks, and Poisson Point Process models.
-            </p>
-          </div>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- EXPERIENCE -->
-  <section class="portfolio-section">
-
-    <div class="portfolio-section-heading">
-
-      <p class="portfolio-section-label">Experience</p>
-
-      <div class="portfolio-section-content">
-
-        <h2>Professional experience</h2>
-
-        <div class="portfolio-timeline-item">
-
-          <div class="portfolio-time">July 2024 — Present</div>
-
-          <h3>Embedded Software Engineer I</h3>
-
-          <p class="portfolio-subtitle">
-            Siliconova Ltd. · Dhaka, Bangladesh
-          </p>
-
-          <p>
-            Developing high-speed communication and embedded systems using
-            C, Linux, DPDK, FPGA-based SDR platforms, POSIX shared memory,
-            gRPC services, telemetry infrastructure, and system-level
-            performance profiling. My work includes sustained high-throughput
-            data-plane validation, automated testing, debugging, integration,
-            and optimization of production-oriented telecommunications systems.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
-
-
-  <!-- EDUCATION -->
-  <section class="portfolio-section portfolio-section-soft">
-
-    <div class="portfolio-section-heading">
-
-      <p class="portfolio-section-label">Education</p>
-
-      <div class="portfolio-section-content">
-
-        <h2>Academic background</h2>
-
-        <div class="portfolio-timeline-item">
-
-          <div class="portfolio-time">2018 — 2023</div>
-
-          <h3>B.Sc. in Electrical &amp; Computer Engineering</h3>
-
-          <p class="portfolio-subtitle">
-            Rajshahi University of Engineering &amp; Technology (RUET)
-          </p>
-
-          <p>
-            Undergraduate thesis:
-            <strong>
-              Analyzing Secrecy Performance in Wireless Communication Networks
-              with Randomly Distributed Eavesdroppers
-            </strong>.
-            Supervised by Milton Kumar Kundu.
-          </p>
-
-        </div>
-
-      </div>
-
-    </div>
-
-  </section>
+  
 
 
   <!-- TECH -->
-  <section class="portfolio-section">
+  
+<!-- =========================================================
+     01 / UNDERGRADUATE RESEARCH
+========================================================= -->
 
-    <div class="portfolio-section-heading">
+<section class="portfolio-section portfolio-journey-section" id="research-journey">
 
-      <p class="portfolio-section-label">Technologies</p>
+  <div class="portfolio-section-heading">
 
-      <div class="portfolio-section-content">
+    <p class="portfolio-section-label">
+      01 / Undergraduate Research
+    </p>
 
-        <h2>Tools &amp; technical areas</h2>
+    <div class="portfolio-section-content">
 
-        <div class="portfolio-tags">
-          <span class="portfolio-tag">C</span>
-          <span class="portfolio-tag">Linux</span>
-          <span class="portfolio-tag">DPDK</span>
-          <span class="portfolio-tag">HugePages</span>
-          <span class="portfolio-tag">POSIX Shared Memory</span>
-          <span class="portfolio-tag">FPGA</span>
-          <span class="portfolio-tag">Verilog RTL</span>
-          <span class="portfolio-tag">RISC-V</span>
-          <span class="portfolio-tag">PicoRV32</span>
-          <span class="portfolio-tag">Cocotb</span>
-          <span class="portfolio-tag">Verilator</span>
-          <span class="portfolio-tag">Vivado</span>
-          <span class="portfolio-tag">gRPC</span>
-          <span class="portfolio-tag">Python</span>
-          <span class="portfolio-tag">SDR</span>
-          <span class="portfolio-tag">Prometheus</span>
-          <span class="portfolio-tag">Grafana</span>
-          <span class="portfolio-tag">Intel VTune</span>
-          <span class="portfolio-tag">Docker</span>
-        </div>
+      <p class="professional-kicker">
+        Where my interest in wireless communication began
+      </p>
+
+      <h2>
+        Wireless Communication &amp; Channel Secrecy
+      </h2>
+
+      <p class="journey-question">
+        Can a generalized fading model provide a common way to study different wireless channel conditions?
+      </p>
+
+      <p class="journey-story">
+        That question led me to explore wireless channel modeling and physical-layer security during my undergraduate thesis. Because wireless signals are broadcast through an open medium, unintended receivers can also experience the channel, making secrecy an important part of system design. I studied a dual-hop wireless network with randomly distributed eavesdroppers using the α−µ generalized fading model and analyzed attacks at the source, relay, and both hops. The results showed that simultaneous eavesdropping across both hops creates the most critical secrecy condition, while stronger legitimate-channel conditions and receive diversity improve secure communication.
+      </p>
+
+      <div class="journey-tags">
+        <span>α−µ Fading</span>
+        <span>Dual-Hop SIMO</span>
+        <span>Physical-Layer Security</span>
+      </div>
+
+      <a
+        href="{{ '/publication/2023-wireless-secrecy-simo' | relative_url }}"
+        class="journey-link"
+        target="_blank"
+        rel="noopener noreferrer">
+        Read more →
+      </a>
+
+      <div class="thesis-system-model">
+
+        <img
+          src="{{ '/images/thesis/system-model.png' | relative_url }}"
+          alt="Dual-hop SIMO wireless communication system with randomly distributed eavesdroppers">
+
+        <p class="thesis-system-caption">
+          Dual-hop SIMO system model with randomly distributed eavesdroppers
+        </p>
 
       </div>
 
     </div>
 
-  </section>
+  </div>
+
+</section>
+
+<!-- =========================================================
+     02 / PROFESSIONAL ENGINEERING
+========================================================= -->
+
+<section class="portfolio-section professional-engineering-section" id="professional-engineering">
+
+  <div class="portfolio-section-heading">
+
+    <p class="portfolio-section-label">
+      02 / Professional Engineering
+    </p>
+
+    <div class="portfolio-section-content">
+
+      <p class="professional-kicker">
+        From wireless theory to a real high-speed system
+      </p>
+
+      <h2>
+        Satellite Data Acquisition &amp; High-Speed RF Systems
+      </h2>
+
+      <p class="professional-question">
+        What happens when wireless communication leaves the equations and becomes a real high-speed system?
+      </p>
+
+      <p class="professional-story">
+        That question became real in my professional work at <strong>Siliconova</strong>, where I contributed to a <strong>6G-oriented satellite and RF research platform</strong> designed for remote deployments where internet connectivity may be limited or unavailable. The system captures wideband RF data from FPGA-based SDRs, moves it through a <strong>100 Gbps-class DPDK data path</strong>, and records the data locally so researchers can later replay and analyze large datasets for signal studies and machine-learning-based anomaly-detection research.
+      </p>
+
+
+      <!-- SYSTEM OVERVIEW -->
+
+      <div class="professional-system-overview">
+
+        <p class="professional-overview-label">
+          System at a glance
+        </p>
+
+        <img
+          src="{{ '/images/systems/satellite-dpdk-telemetry-architecture.png' | relative_url }}"
+          alt="End-to-end satellite data acquisition, DPDK processing, telemetry and monitoring architecture">
+
+        <p class="professional-overview-caption">
+          End-to-end satellite data acquisition and telemetry architecture:
+          remote SDR capture → high-speed DPDK processing → telemetry extraction →
+          gRPC services → Prometheus and Grafana monitoring.
+        </p>
+
+      </div>
+
+
+
+      <!-- STEP 1 -->
+
+      <div class="professional-step">
+
+        <div class="professional-step-image">
+
+          <img
+            src="{{ '/images/systems/part1_flex_compute_fpga.png' | relative_url }}"
+            alt="FPGA and SDR satellite RF ingress architecture">
+
+        </div>
+
+        <div class="professional-step-copy">
+
+          <span class="professional-step-number">01</span>
+
+          <h3>
+            How does the signal enter the system?
+          </h3>
+
+          <p>
+            Satellite RF signals are acquired through FPGA-based SDR front ends, where raw I/Q samples are framed, timestamped, sequence-tracked, and transmitted over high-speed Ethernet to the capture server.
+          </p>
+
+          <div class="professional-mini-flow">
+            Satellite → SDR / FPGA → I/Q Data → Ethernet → Capture Server
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- STEP 2 -->
+
+      <div class="professional-step professional-step-reverse">
+
+        <div class="professional-step-image">
+
+          <img
+            src="{{ '/images/systems/part3_dpdk_data_plane.jpg' | relative_url }}"
+            alt="DPDK high-speed user-space data plane">
+
+        </div>
+
+        <div class="professional-step-copy">
+
+          <span class="professional-step-number">02</span>
+
+          <h3>
+            How do you handle that much data reliably?
+          </h3>
+
+          <p>
+            At the server, a DPDK-based user-space data plane uses kernel bypass, HugePages, and dedicated processing paths to handle high-rate traffic efficiently. Telemetry is separated from the critical fast path through shared memory and lightweight synchronization so monitoring does not interrupt packet processing.
+          </p>
+
+          <div class="professional-mini-flow">
+            100 Gbps Ingress → DPDK → Local Recording
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- STEP 3 -->
+
+      <div class="professional-step">
+
+        <div class="professional-step-image">
+
+          <img
+            src="{{ '/images/systems/part5_operator_ui_benchmarks.png' | relative_url }}"
+            alt="Satellite telemetry record playback validation and benchmarks">
+
+        </div>
+
+        <div class="professional-step-copy">
+
+          <span class="professional-step-number">03</span>
+
+          <h3>
+            How do you know the captured data is trustworthy?
+          </h3>
+
+          <p>
+            Captured datasets are replayed through an isolated validation path and checked for packet continuity, sequence integrity, anomalies, and runtime performance.
+          </p>
+
+          <div class="professional-result">
+
+            <div>
+              <strong>859M+</strong>
+              <span>packets validated</span>
+            </div>
+
+            <div>
+              <strong>0</strong>
+              <span>observed packet drops</span>
+            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+
+      <!-- RESULT -->
+
+      <div class="professional-outcome">
+
+        <p>
+          The result is a platform that allows researchers to capture massive satellite datasets during short remote observation windows, store them locally, and later use them for deeper signal analysis and anomaly-detection research.
+        </p>
+
+      </div>
+
+
+      <div class="professional-tags">
+
+        <span>Satellite RF</span>
+        <span>FPGA / SDR</span>
+        <span>DPDK</span>
+        <span>100 Gbps</span>
+        <span>HugePages</span>
+        <span>Record / Playback</span>
+
+      </div>
+
+
+      <a
+        href="{{ '/portfolio/satellite-telemetry-daq' | relative_url }}"
+        class="professional-read-more"
+        target="_blank"
+        rel="noopener noreferrer">
+        Project Details →
+      </a>
+
+    </div>
+
+  </div>
+
+</section>
+
+
+
+
 
 
   <!-- SELECTED PROJECTS -->
@@ -1225,3 +1319,1378 @@ layout: default
   </section>
 
 </main>
+
+<style>
+
+/* =====================================================
+   CO-CURRICULAR ACTIVITIES SLIDER
+   ===================================================== */
+
+.activity-slider-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-end;
+  gap: 30px;
+  margin-bottom: 30px;
+}
+
+.activity-slider-header h2 {
+  margin: 0 0 10px;
+  font-size: clamp(2rem, 3vw, 3rem);
+  line-height: 1.1;
+}
+
+.activity-slider-header p {
+  max-width: 720px;
+  margin: 0;
+  line-height: 1.7;
+  opacity: 0.75;
+}
+
+.activity-view-all {
+  flex: 0 0 auto;
+  text-decoration: none;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.activity-slider {
+  position: relative;
+  width: 100%;
+}
+
+.activity-slider-viewport {
+  overflow: hidden;
+  border: 1px solid rgba(128,128,128,0.25);
+  border-radius: 14px;
+  background: rgba(128,128,128,0.035);
+}
+
+.activity-slider-track {
+  display: flex;
+  transition: transform 0.55s cubic-bezier(.22,.61,.36,1);
+}
+
+.activity-slide {
+  position: relative;
+  flex: 0 0 100%;
+  min-width: 100%;
+  height: 520px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 24px 70px 72px;
+
+  background: rgba(128,128,128,0.025);
+}
+
+.activity-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  display: block;
+}
+
+.activity-slide-caption {
+  position: absolute;
+  left: 28px;
+  right: 28px;
+  bottom: 20px;
+
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.activity-slide-caption span {
+  font-size: 0.7rem;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  text-transform: uppercase;
+  opacity: 0.55;
+}
+
+.activity-slide-caption p {
+  margin: 0;
+  font-size: 0.9rem;
+  font-weight: 600;
+}
+
+.activity-slider-btn {
+  position: absolute;
+  top: 245px;
+  z-index: 5;
+
+  width: 44px;
+  height: 44px;
+
+  border-radius: 50%;
+  border: 1px solid rgba(128,128,128,0.3);
+
+  background: rgba(255,255,255,0.9);
+  color: #3f454b;
+
+  font-size: 1.35rem;
+  line-height: 1;
+
+  cursor: pointer;
+
+  box-shadow: 0 8px 25px rgba(0,0,0,0.08);
+
+  transition:
+    transform 0.2s ease,
+    background 0.2s ease;
+}
+
+.activity-slider-btn:hover {
+  transform: scale(1.07);
+}
+
+.activity-prev {
+  left: 20px;
+}
+
+.activity-next {
+  right: 20px;
+}
+
+.activity-slider-footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+
+  gap: 20px;
+  margin-top: 18px;
+}
+
+.activity-slider-dots {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 7px;
+}
+
+.activity-slider-dot {
+  width: 7px;
+  height: 7px;
+
+  padding: 0;
+
+  border: 0;
+  border-radius: 50%;
+
+  background: rgba(128,128,128,0.35);
+
+  cursor: pointer;
+
+  transition:
+    width 0.25s ease,
+    border-radius 0.25s ease,
+    background 0.25s ease;
+}
+
+.activity-slider-dot.active {
+  width: 24px;
+  border-radius: 10px;
+  background: currentColor;
+}
+
+.activity-slider-counter {
+  flex: 0 0 auto;
+
+  display: flex;
+  gap: 5px;
+
+  font-size: 0.78rem;
+  font-variant-numeric: tabular-nums;
+  opacity: 0.55;
+}
+
+
+/* Dark mode compatibility */
+
+html[data-theme="dark"] .activity-slider-btn,
+.dark .activity-slider-btn {
+  background: rgba(25,25,25,0.9);
+  color: #fff;
+}
+
+
+/* Tablet */
+
+@media (max-width: 900px) {
+
+  .activity-slider-header {
+    align-items: flex-start;
+    flex-direction: column;
+  }
+
+  .activity-slide {
+    height: 450px;
+    padding: 20px 55px 65px;
+  }
+
+  .activity-slider-btn {
+    top: 210px;
+  }
+
+}
+
+
+/* Mobile */
+
+@media (max-width: 620px) {
+
+  .activity-slider-header h2 {
+    font-size: 2rem;
+  }
+
+  .activity-slide {
+    height: 350px;
+    padding: 15px 42px 60px;
+  }
+
+  .activity-slider-btn {
+    width: 36px;
+    height: 36px;
+
+    top: 160px;
+
+    font-size: 1rem;
+  }
+
+  .activity-prev {
+    left: 8px;
+  }
+
+  .activity-next {
+    right: 8px;
+  }
+
+  .activity-slide-caption {
+    left: 15px;
+    right: 15px;
+    bottom: 16px;
+  }
+
+  .activity-slider-dots {
+    max-width: 80%;
+  }
+
+}
+
+</style>
+
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const slider = document.querySelector("[data-activity-slider]");
+
+  if (!slider) return;
+
+  const track = slider.querySelector(".activity-slider-track");
+  const slides = Array.from(
+    slider.querySelectorAll(".activity-slide")
+  );
+
+  const prevButton = slider.querySelector(".activity-prev");
+  const nextButton = slider.querySelector(".activity-next");
+
+  const dotsContainer =
+    slider.querySelector(".activity-slider-dots");
+
+  const currentCounter =
+    slider.querySelector(".activity-current");
+
+  const totalCounter =
+    slider.querySelector(".activity-total");
+
+  let currentIndex = 0;
+  let autoSlide;
+
+  if (totalCounter) {
+    totalCounter.textContent =
+      String(slides.length).padStart(2, "0");
+  }
+
+
+  slides.forEach(function (_, index) {
+
+    const dot = document.createElement("button");
+
+    dot.type = "button";
+    dot.className = "activity-slider-dot";
+    dot.setAttribute(
+      "aria-label",
+      "Go to slide " + (index + 1)
+    );
+
+    dot.addEventListener("click", function () {
+      goToSlide(index);
+      restartAutoSlide();
+    });
+
+    if (dotsContainer) {
+      dotsContainer.appendChild(dot);
+    }
+
+  });
+
+
+  const dots = dotsContainer
+    ? Array.from(
+        dotsContainer.querySelectorAll(".activity-slider-dot")
+      )
+    : [];
+
+
+  function goToSlide(index) {
+
+    const mobile = window.innerWidth <= 700;
+    const visibleSlides = mobile ? 1 : 2;
+
+    const maxIndex = Math.max(
+      0,
+      slides.length - visibleSlides
+    );
+
+    if (index > maxIndex) {
+      index = 0;
+    }
+
+    if (index < 0) {
+      index = maxIndex;
+    }
+
+    currentIndex = index;
+
+    const targetSlide = slides[currentIndex];
+
+    if (!targetSlide) {
+      currentIndex = 0;
+      return;
+    }
+
+    track.style.transform =
+      "translate3d(-" +
+      targetSlide.offsetLeft +
+      "px, 0, 0)";
+  }
+
+
+  function nextSlide() {
+    goToSlide(currentIndex + 1);
+  }
+
+
+  function previousSlide() {
+    goToSlide(currentIndex - 1);
+  }
+
+
+  function startAutoSlide() {
+    stopAutoSlide();
+    autoSlide = setInterval(nextSlide, 3000);
+  }
+
+
+  function stopAutoSlide() {
+    clearInterval(autoSlide);
+    autoSlide = null;
+  }
+
+
+  function restartAutoSlide() {
+    stopAutoSlide();
+    startAutoSlide();
+  }
+
+
+  if (nextButton) {
+    nextButton.addEventListener("click", function () {
+      nextSlide();
+      restartAutoSlide();
+    });
+  }
+
+
+  if (prevButton) {
+    prevButton.addEventListener("click", function () {
+      previousSlide();
+      restartAutoSlide();
+    });
+  }
+
+
+  /*
+   * Start the slider only when the Activities section
+   * actually enters the viewport.
+   *
+   * Every time the user returns to the section,
+   * reset the carousel to the beginning.
+   */
+  let sliderVisible = false;
+
+  const observer = new IntersectionObserver(
+    function (entries) {
+
+      entries.forEach(function (entry) {
+
+        if (entry.isIntersecting && !sliderVisible) {
+
+          sliderVisible = true;
+
+          stopAutoSlide();
+
+          currentIndex = 0;
+
+          track.style.transition = "none";
+          goToSlide(0);
+
+          requestAnimationFrame(function () {
+            requestAnimationFrame(function () {
+
+              track.style.transition =
+                "transform 0.8s cubic-bezier(0.22, 1, 0.36, 1)";
+
+              startAutoSlide();
+
+            });
+          });
+
+        } else if (!entry.isIntersecting && sliderVisible) {
+
+          sliderVisible = false;
+          stopAutoSlide();
+
+        }
+
+      });
+
+    },
+    {
+      threshold: 0.35
+    }
+  );
+
+  observer.observe(slider);
+
+
+  /* Swipe support */
+
+  let touchStartX = 0;
+
+  slider.addEventListener(
+    "touchstart",
+    function (event) {
+      touchStartX = event.touches[0].clientX;
+    },
+    { passive: true }
+  );
+
+
+  slider.addEventListener(
+    "touchend",
+    function (event) {
+
+      const touchEndX =
+        event.changedTouches[0].clientX;
+
+      const difference =
+        touchStartX - touchEndX;
+
+      if (Math.abs(difference) < 50) return;
+
+      if (difference > 0) {
+        nextSlide();
+      } else {
+        previousSlide();
+      }
+
+      restartAutoSlide();
+
+    },
+    { passive: true }
+  );
+  goToSlide(0);
+
+});
+</script>
+
+
+<style>
+
+/* ===== FINAL CLEAN ACTIVITY SLIDER ===== */
+
+#activities-preview .activity-slider-btn,
+#activities-preview .activity-slider-footer,
+#activities-preview .activity-slider-counter,
+#activities-preview .activity-slider-dots,
+#activities-preview .activity-slide-caption {
+  display: none !important;
+}
+
+#activities-preview .activity-slider {
+  width: 100%;
+  overflow: hidden;
+}
+
+#activities-preview .activity-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+  border-radius: 14px;
+  border: 1px solid rgba(128,128,128,0.20);
+}
+
+#activities-preview .activity-slider-track {
+  display: flex;
+  width: 100%;
+}
+
+#activities-preview .activity-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  width: 100%;
+  height: 560px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent;
+}
+
+#activities-preview .activity-slide img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  margin: 0;
+  padding: 0;
+
+  border-radius: 0;
+}
+
+@media (max-width: 900px) {
+
+  #activities-preview .activity-slide {
+    height: 440px;
+  }
+
+}
+
+@media (max-width: 620px) {
+
+  #activities-preview .activity-slide {
+    height: 300px;
+  }
+
+}
+
+</style>
+
+<style>
+
+/* ===== COMPACT TRANSPARENT ACTIVITY SLIDER ===== */
+
+#activities-preview .activity-slider {
+  width: 100%;
+  max-width: 980px;
+  margin: 0 auto;
+  overflow: hidden;
+}
+
+#activities-preview .activity-slider-viewport {
+  width: 100%;
+  overflow: hidden;
+
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+
+  border-radius: 0;
+}
+
+#activities-preview .activity-slide {
+  flex: 0 0 100%;
+  min-width: 100%;
+  width: 100%;
+
+  height: 380px;
+
+  padding: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  background: transparent !important;
+}
+
+#activities-preview .activity-slide img {
+  display: block;
+
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  margin: 0 auto;
+  padding: 0;
+
+  background: transparent;
+
+  border: none;
+  border-radius: 8px;
+  box-shadow: none;
+}
+
+#activities-preview .activity-slider-btn,
+#activities-preview .activity-slider-footer,
+#activities-preview .activity-slide-caption {
+  display: none !important;
+}
+
+@media (max-width: 900px) {
+
+  #activities-preview .activity-slide {
+    height: 320px;
+  }
+
+}
+
+@media (max-width: 620px) {
+
+  #activities-preview .activity-slide {
+    height: 230px;
+  }
+
+}
+
+</style>
+
+
+<style>
+
+/* ===== SMOOTH 3-SECOND ACTIVITY SLIDER ===== */
+
+#activities-preview .activity-slider-track {
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: transform;
+}
+
+</style>
+
+<style>
+
+/* ===== HOVER-ONLY SLIDER ARROWS ===== */
+
+#activities-preview .activity-slider-btn {
+  display: flex !important;
+
+  align-items: center;
+  justify-content: center;
+
+  opacity: 0;
+  visibility: hidden;
+
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease,
+    visibility 0.25s ease;
+}
+
+#activities-preview .activity-slider:hover .activity-slider-btn {
+  opacity: 1;
+  visibility: visible;
+}
+
+#activities-preview .activity-prev {
+  left: 14px;
+}
+
+#activities-preview .activity-next {
+  right: 14px;
+}
+
+#activities-preview .activity-slider-btn:hover {
+  transform: scale(1.08);
+}
+
+</style>
+
+<style>
+
+/* ===== TWO-IMAGE ACTIVITY SLIDER ===== */
+
+#activities-preview .activity-slider-track {
+  display: flex;
+  gap: 18px;
+  transition: transform 0.85s cubic-bezier(0.22, 1, 0.36, 1) !important;
+  will-change: transform;
+}
+
+#activities-preview .activity-slide {
+  flex: 0 0 calc(50% - 9px);
+  min-width: calc(50% - 9px);
+
+  height: 340px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  padding: 0;
+
+  background: transparent !important;
+}
+
+#activities-preview .activity-slide img {
+  width: 100%;
+  height: 100%;
+
+  object-fit: contain;
+
+  display: block;
+
+  background: transparent !important;
+  border: none;
+  border-radius: 8px;
+}
+
+@media (max-width: 700px) {
+
+  #activities-preview .activity-slider-track {
+    gap: 0;
+  }
+
+  #activities-preview .activity-slide {
+    flex: 0 0 100%;
+    min-width: 100%;
+    height: 300px;
+  }
+
+}
+
+</style>
+
+<style>
+
+/* ===== TALLER ACTIVITY SLIDER ===== */
+
+#activities-preview .activity-slide {
+  height: 420px !important;
+}
+
+#activities-preview .activity-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  #activities-preview .activity-slide {
+    height: 360px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  #activities-preview .activity-slide {
+    height: 260px !important;
+  }
+}
+
+</style>
+
+<style>
+
+/* ===== REMOVE EXTRA SPACE BELOW ACTIVITY SLIDER ===== */
+
+#activities-preview {
+  padding-bottom: 20px !important;
+}
+
+#activities-preview .portfolio-section-heading,
+#activities-preview .portfolio-section-content,
+#activities-preview .activity-slider {
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .activity-slider-viewport {
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .activity-slide {
+  height: 460px !important;
+  padding-bottom: 0 !important;
+}
+
+#activities-preview .activity-slide img {
+  height: 100%;
+  width: 100%;
+  object-fit: contain;
+}
+
+@media (max-width: 900px) {
+  #activities-preview .activity-slide {
+    height: 380px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  #activities-preview .activity-slide {
+    height: 280px !important;
+  }
+}
+
+</style>
+
+<style>
+
+/* ===== TIGHT ACTIVITY SECTION SPACING ===== */
+
+#activities-preview {
+  padding-top: 20px !important;
+  padding-bottom: 20px !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .portfolio-section-heading {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#activities-preview .portfolio-section-content {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#activities-preview .activity-slider-header {
+  margin-top: 0 !important;
+  margin-bottom: 14px !important;
+}
+
+#activities-preview .activity-slider {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .activity-slider-viewport {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .activity-slide {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+</style>
+
+<style>
+
+/* ===== FINAL ACTIVITY SECTION SPACING ===== */
+
+#activities-preview {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .portfolio-section-heading,
+#activities-preview .portfolio-section-content {
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+}
+
+#activities-preview .activity-slider-header {
+  margin-top: 0 !important;
+  margin-bottom: 8px !important;
+}
+
+#activities-preview .activity-slider,
+#activities-preview .activity-slider-viewport,
+#activities-preview .activity-slider-track {
+  margin-top: 0 !important;
+  margin-bottom: 0 !important;
+  padding-top: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+#activities-preview .activity-slide {
+  height: 450px !important;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+#activities-preview .activity-slide img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  margin: 0 !important;
+  padding: 0 !important;
+}
+
+/* Keep next section close to the slider */
+#activities-preview + .portfolio-section {
+  margin-top: 0 !important;
+  padding-top: 30px !important;
+}
+
+@media (max-width: 900px) {
+  #activities-preview .activity-slide {
+    height: 360px !important;
+  }
+}
+
+@media (max-width: 620px) {
+  #activities-preview .activity-slide {
+    height: 260px !important;
+  }
+}
+
+</style>
+
+<style>
+
+/* ===== REMOVE GAP BETWEEN ABOUT AND ACTIVITIES ===== */
+
+#about {
+  margin-bottom: 0 !important;
+  padding-bottom: 18px !important;
+}
+
+#about + #activities-preview {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#about .portfolio-section-heading,
+#about .portfolio-section-content {
+  margin-bottom: 0 !important;
+  padding-bottom: 0 !important;
+}
+
+</style>
+
+<style>
+
+/* ===== BALANCED SPACE BETWEEN ABOUT AND ACTIVITIES ===== */
+
+#about {
+  margin-bottom: 0 !important;
+  padding-bottom: 56px !important;
+}
+
+#activities-preview {
+  margin-top: 0 !important;
+  padding-top: 36px !important;
+}
+
+</style>
+
+<style>
+
+/* ===== ACTIVITY SECTION TOP MARGIN ===== */
+
+#activities-preview {
+  margin-top: 36px !important;
+}
+
+</style>
+
+<style>
+
+/* ===== VISIBLE TOP SPACE INSIDE ACTIVITIES ===== */
+
+#activities-preview {
+  margin-top: 0 !important;
+  padding-top: 0 !important;
+}
+
+#activities-preview > .portfolio-section-heading {
+  padding-top: 55px !important;
+}
+
+</style>
+
+<style>
+
+/* ===== COMPACT THESIS FIGURES ===== */
+
+#research-journey .thesis-scenarios {
+  display: grid !important;
+  grid-template-columns: repeat(3, 1fr) !important;
+  gap: 14px !important;
+  align-items: start !important;
+
+  max-width: 900px !important;
+  margin: 28px auto 0 !important;
+}
+
+#research-journey .thesis-scenario {
+  width: 100% !important;
+  min-width: 0 !important;
+  text-align: center !important;
+}
+
+#research-journey .thesis-scenario img {
+  width: 100% !important;
+  height: 145px !important;
+  object-fit: contain !important;
+
+  display: block !important;
+  margin: 0 auto !important;
+
+  border: 0 !important;
+  border-radius: 4px !important;
+}
+
+#research-journey .thesis-scenario p {
+  margin: 7px 0 0 !important;
+
+  font-size: 0.72rem !important;
+  line-height: 1.35 !important;
+  text-align: center !important;
+
+  opacity: 0.72 !important;
+}
+
+#research-journey .thesis-scenario strong {
+  display: inline !important;
+  font-size: inherit !important;
+  font-weight: 600 !important;
+}
+
+@media (max-width: 620px) {
+
+  #research-journey .thesis-scenarios {
+    gap: 6px !important;
+  }
+
+  #research-journey .thesis-scenario img {
+    height: 90px !important;
+  }
+
+  #research-journey .thesis-scenario p {
+    font-size: 0.62rem !important;
+  }
+
+}
+
+</style>
+
+<style>
+
+/* =========================================================
+   PROFESSIONAL ENGINEERING STORY
+========================================================= */
+
+#professional-engineering {
+  padding-top: 72px;
+  padding-bottom: 72px;
+}
+
+#professional-engineering .portfolio-section-content {
+  max-width: 980px;
+}
+
+
+/* INTRO */
+
+.professional-kicker {
+  margin: 0 0 10px;
+
+  font-size: 0.82rem;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+
+  opacity: 0.62;
+}
+
+#professional-engineering h2 {
+  margin: 0 0 15px;
+
+  font-size: clamp(2rem, 3vw, 3.1rem);
+  line-height: 1.1;
+  letter-spacing: -0.03em;
+}
+
+.professional-question {
+  max-width: 900px;
+
+  margin: 24px 0 18px;
+
+  font-size: clamp(1.2rem, 1.8vw, 1.55rem);
+  line-height: 1.5;
+  font-weight: 600;
+
+  letter-spacing: -0.015em;
+}
+
+.professional-story {
+  max-width: 920px;
+
+  margin: 0;
+
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
+
+/* STORY STEPS */
+
+.professional-step {
+  display: grid;
+  grid-template-columns: 1.15fr 0.85fr;
+  gap: 42px;
+
+  align-items: center;
+
+  margin-top: 58px;
+}
+
+.professional-step-reverse {
+  grid-template-columns: 0.85fr 1.15fr;
+}
+
+.professional-step-reverse .professional-step-image {
+  order: 2;
+}
+
+.professional-step-image img {
+  display: block;
+
+  width: 100%;
+  max-height: 360px;
+
+  object-fit: contain;
+
+  border-radius: 8px;
+}
+
+.professional-step-copy {
+  min-width: 0;
+}
+
+.professional-step-number {
+  display: block;
+
+  margin-bottom: 8px;
+
+  font-size: 0.72rem;
+  line-height: 1;
+
+  font-weight: 700;
+
+  letter-spacing: 0.14em;
+
+  opacity: 0.44;
+}
+
+.professional-step-copy h3 {
+  margin: 0 0 12px;
+
+  font-size: clamp(1.25rem, 1.8vw, 1.55rem);
+  line-height: 1.3;
+}
+
+.professional-step-copy p {
+  margin: 0;
+
+  font-size: 0.94rem;
+  line-height: 1.75;
+}
+
+
+/* MINI DATA FLOW */
+
+.professional-mini-flow {
+  margin-top: 17px;
+
+  padding: 10px 13px;
+
+  border-left: 3px solid rgba(75, 174, 208, 0.75);
+
+  background: rgba(75, 174, 208, 0.055);
+
+  font-size: 0.78rem;
+  line-height: 1.5;
+
+  font-weight: 600;
+
+  opacity: 0.82;
+}
+
+
+/* VALIDATION RESULT */
+
+.professional-result {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+
+  gap: 14px;
+
+  margin-top: 22px;
+}
+
+.professional-result div {
+  padding: 18px;
+
+  border: 1px solid rgba(128,128,128,0.22);
+  border-radius: 8px;
+
+  text-align: center;
+}
+
+.professional-result strong {
+  display: block;
+
+  margin-bottom: 5px;
+
+  font-size: clamp(1.7rem, 3vw, 2.4rem);
+  line-height: 1;
+
+  letter-spacing: -0.03em;
+}
+
+.professional-result span {
+  display: block;
+
+  font-size: 0.72rem;
+  line-height: 1.35;
+
+  opacity: 0.62;
+}
+
+
+/* OUTCOME */
+
+.professional-outcome {
+  max-width: 900px;
+
+  margin-top: 54px;
+
+  padding: 22px 24px;
+
+  border-left: 4px solid rgba(75,174,208,0.75);
+
+  background: rgba(75,174,208,0.05);
+}
+
+.professional-outcome p {
+  margin: 0;
+
+  font-size: 0.95rem;
+  line-height: 1.75;
+}
+
+
+/* TAGS */
+
+.professional-tags {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+
+  margin-top: 24px;
+}
+
+.professional-tags span {
+  padding: 7px 11px;
+
+  border: 1px solid rgba(128,128,128,0.26);
+  border-radius: 999px;
+
+  font-size: 0.75rem;
+  line-height: 1;
+}
+
+
+/* READ MORE */
+
+.professional-read-more {
+  display: inline-block;
+
+  margin-top: 26px;
+
+  font-size: 0.9rem;
+  font-weight: 600;
+
+  text-decoration: none;
+}
+
+
+/* MOBILE */
+
+@media (max-width: 800px) {
+
+  .professional-step,
+  .professional-step-reverse {
+    grid-template-columns: 1fr;
+
+    gap: 22px;
+
+    margin-top: 46px;
+  }
+
+  .professional-step-reverse .professional-step-image {
+    order: 0;
+  }
+
+  .professional-step-image img {
+    max-height: 320px;
+  }
+
+}
+
+@media (max-width: 620px) {
+
+  #professional-engineering {
+    padding-top: 52px;
+    padding-bottom: 52px;
+  }
+
+  .professional-result {
+    grid-template-columns: 1fr;
+  }
+
+  .professional-story,
+  .professional-step-copy p {
+    font-size: 0.94rem;
+  }
+
+}
+
+</style>
+
+<style>
+
+/* Refine professional system overview */
+
+.professional-system-overview img {
+  width: 94%;
+  max-width: 1050px;
+  margin: 0 auto;
+}
+
+.professional-overview-caption {
+  display: none;
+}
+
+</style>
