@@ -94,3 +94,11 @@ layout: default
     </div>
   {% endif %}
 </div>
+
+{% if page.collection == "portfolio" %}
+<style>
+  .page__date {
+    display: none !important;
+  }
+</style>
+{% endif %}
