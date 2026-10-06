@@ -1,0 +1,618 @@
+---
+layout: default
+title: "My Research & Engineering Journey"
+permalink: /research-journey/
+---
+
+<style>
+  .research-journey-page {
+    max-width: 1120px;
+    margin: 0 auto;
+    padding: 58px 28px 90px;
+  }
+
+  .research-journey-intro {
+    max-width: 820px;
+    margin-bottom: 56px;
+  }
+
+  .research-journey-intro .eyebrow {
+    margin-bottom: 10px;
+
+    color: #9aa0a6;
+
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
+  }
+
+  .research-journey-intro h1 {
+    margin: 0 0 15px;
+
+    font-size: clamp(2.2rem, 4vw, 3.6rem);
+    line-height: 1.08;
+
+    letter-spacing: -0.035em;
+  }
+
+  .research-journey-intro p {
+    max-width: 760px;
+
+    margin: 0;
+
+    font-size: 1rem;
+    line-height: 1.75;
+
+    color: #70767d;
+  }
+
+  /* =========================================================
+   STORY SECTION
+========================================================= */
+
+  .research-story-section {
+    display: grid;
+    grid-template-columns: 190px minmax(0, 1fr);
+
+    gap: 42px;
+
+    padding: 58px 0;
+
+    border-top: 1px solid rgba(128, 128, 128, 0.18);
+  }
+
+  .research-story-label {
+    padding-top: 4px;
+
+    color: #9aa0a6;
+
+    font-size: 0.74rem;
+    font-weight: 700;
+
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+
+    line-height: 1.6;
+  }
+
+  .research-story-content {
+    min-width: 0;
+  }
+
+  .research-story-content h2 {
+    margin: 0 0 22px;
+
+    font-size: clamp(1.8rem, 3vw, 2.7rem);
+    line-height: 1.15;
+
+    letter-spacing: -0.025em;
+  }
+
+  /* QUESTION */
+
+  .research-question {
+    max-width: 820px;
+
+    margin: 0 0 28px;
+
+    color: #697078;
+
+    font-size: clamp(1.12rem, 1.8vw, 1.32rem);
+    font-weight: 600;
+
+    line-height: 1.6;
+  }
+
+  /* IMAGE */
+
+  .research-story-image {
+    margin: 28px 0;
+  }
+
+  .research-story-image img {
+    display: block;
+
+    width: 100%;
+    max-height: 430px;
+
+    object-fit: contain;
+
+    border-radius: 8px;
+  }
+
+  .research-image-caption {
+    margin: 10px 0 0;
+
+    text-align: center;
+
+    color: #8b9197;
+
+    font-size: 0.73rem;
+    line-height: 1.5;
+  }
+
+  /* WHAT I DID / ACHIEVED */
+
+  .research-answer-grid {
+    display: grid;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+
+    gap: 18px;
+
+    margin-top: 24px;
+  }
+
+  .research-answer-card {
+    padding: 20px 22px;
+
+    border: 1px solid rgba(128, 128, 128, 0.18);
+    border-radius: 10px;
+
+    background: rgba(128, 128, 128, 0.025);
+  }
+
+  .research-answer-card span {
+    display: block;
+
+    margin-bottom: 8px;
+
+    color: #99a0a7;
+
+    font-size: 0.68rem;
+    font-weight: 700;
+
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+  }
+
+  .research-answer-card p {
+    margin: 0;
+
+    color: #5f666d;
+
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  /* TAGS */
+
+  .research-tags {
+    display: flex;
+    flex-wrap: wrap;
+
+    gap: 9px;
+
+    margin-top: 22px;
+  }
+
+  .research-tags span {
+    padding: 7px 12px;
+
+    border: 1px solid rgba(56, 163, 205, 0.28);
+    border-radius: 999px;
+
+    background: rgba(56, 163, 205, 0.06);
+
+    color: #55717d;
+
+    font-size: 0.74rem;
+    font-weight: 600;
+  }
+
+  /* STATS */
+
+  .research-stats {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+
+    gap: 14px;
+
+    margin-top: 24px;
+  }
+
+  .research-stat {
+    padding: 18px;
+
+    border: 1px solid rgba(128, 128, 128, 0.18);
+    border-radius: 10px;
+
+    text-align: center;
+  }
+
+  .research-stat strong {
+    display: block;
+
+    margin-bottom: 4px;
+
+    font-size: 1.55rem;
+    line-height: 1;
+  }
+
+  .research-stat span {
+    color: #7b8289;
+
+    font-size: 0.72rem;
+  }
+
+  /* BUTTON */
+
+  .research-button {
+    display: inline-flex;
+    align-items: center;
+
+    margin-top: 24px;
+    padding: 10px 17px;
+
+    border: 1px solid rgba(56, 163, 205, 0.42);
+    border-radius: 9px;
+
+    background: rgba(56, 163, 205, 0.07);
+
+    color: #2f9fc7;
+
+    font-size: 0.84rem;
+    font-weight: 700;
+
+    text-decoration: none;
+
+    transition:
+      transform 0.18s ease,
+      background 0.18s ease;
+  }
+
+  .research-button:hover {
+    transform: translateY(-1px);
+
+    background: rgba(56, 163, 205, 0.12);
+
+    text-decoration: none;
+  }
+
+  /* FUTURE RESEARCH */
+
+  .future-research-card {
+    padding: 30px;
+
+    border: 1px solid rgba(56, 163, 205, 0.22);
+    border-radius: 14px;
+
+    background: rgba(56, 163, 205, 0.045);
+  }
+
+  .future-research-card .research-question {
+    margin-bottom: 22px;
+  }
+
+  .future-focus {
+    display: grid;
+    grid-template-columns: repeat(4, minmax(0, 1fr));
+
+    gap: 10px;
+
+    margin-top: 22px;
+  }
+
+  .future-focus div {
+    padding: 14px 12px;
+
+    border: 1px solid rgba(128, 128, 128, 0.17);
+    border-radius: 8px;
+
+    background: rgba(255, 255, 255, 0.42);
+
+    text-align: center;
+
+    font-size: 0.76rem;
+    font-weight: 600;
+  }
+
+  .future-study-goal {
+    margin: 24px 0 0;
+
+    color: #626970;
+
+    font-size: 0.94rem;
+    line-height: 1.7;
+  }
+
+  /* MOBILE */
+
+  @media (max-width: 760px) {
+    .research-journey-page {
+      padding: 42px 20px 70px;
+    }
+
+    .research-story-section {
+      grid-template-columns: 1fr;
+
+      gap: 12px;
+
+      padding: 44px 0;
+    }
+
+    .research-answer-grid,
+    .research-stats {
+      grid-template-columns: 1fr;
+    }
+
+    .future-focus {
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+    }
+  }
+
+  @media (max-width: 480px) {
+    .future-focus {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+
+<div class="research-journey-page">
+  <!-- =====================================================
+       INTRO
+  ====================================================== -->
+
+  <header class="research-journey-intro">
+    <div class="eyebrow">My Research &amp; Engineering Journey</div>
+
+    <h1>From wireless channel theory to intelligent communication systems</h1>
+
+    <p>
+      A short story of the questions that shaped my research, the engineering
+      challenges I worked on, and the direction I want to explore through
+      graduate study.
+    </p>
+  </header>
+
+  <!-- =====================================================
+       01 / UNDERGRADUATE THESIS
+  ====================================================== -->
+
+  <section class="research-story-section">
+    <div class="research-story-label">01 / Undergraduate Thesis</div>
+
+    <div class="research-story-content">
+      <h2>Wireless fading &amp; channel secrecy</h2>
+
+      <p class="research-question">
+        How do fading conditions and eavesdroppers affect the security of a
+        wireless channel?
+      </p>
+
+      <div class="research-story-image">
+        <img
+          src="{{ '/images/thesis/system-model.png' | relative_url }}"
+          alt="Dual-hop wireless communication system with randomly distributed eavesdroppers"
+        />
+
+        <p class="research-image-caption">
+          Dual-hop wireless communication model with randomly distributed
+          eavesdroppers
+        </p>
+      </div>
+
+      <div class="research-answer-grid">
+        <div class="research-answer-card">
+          <span> What I did </span>
+
+          <p>
+            I modeled a dual-hop wireless network using the generalized α−µ
+            fading model and studied source-hop, relay-hop, and simultaneous
+            eavesdropping.
+          </p>
+        </div>
+
+        <div class="research-answer-card">
+          <span> What I found </span>
+
+          <p>
+            Simultaneous eavesdropping across both hops produced the highest
+            secrecy risk, while stronger legitimate channels and receive
+            diversity improved secure communication.
+          </p>
+        </div>
+      </div>
+
+      <div class="research-tags">
+        <span>α−µ Fading</span>
+        <span>Dual-Hop SIMO</span>
+        <span>Physical-Layer Security</span>
+      </div>
+
+      <a
+        href="{{ '/publication/2023-wireless-secrecy-simo' | relative_url }}"
+        class="research-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        View Thesis
+      </a>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       02 / PROFESSIONAL ENGINEERING
+  ====================================================== -->
+
+  <section class="research-story-section">
+    <div class="research-story-label">02 / Professional Engineering</div>
+
+    <div class="research-story-content">
+      <h2>Satellite RF &amp; high-speed data systems</h2>
+
+      <p class="research-question">
+        What happens when wireless communication moves from mathematical models
+        to a real high-speed system?
+      </p>
+
+      <div class="research-story-image">
+        <img
+          src="{{ '/images/systems/satellite-dpdk-telemetry-architecture.png' | relative_url }}"
+          alt="Satellite RF acquisition and high-speed processing architecture"
+        />
+      </div>
+
+      <div class="research-answer-grid">
+        <div class="research-answer-card">
+          <span> What I did </span>
+
+          <p>
+            At Siliconova, I worked with FPGA-based SDRs and a 100 Gbps-class
+            DPDK data path for capturing large satellite RF datasets, including
+            systems intended for remote deployments.
+          </p>
+        </div>
+
+        <div class="research-answer-card">
+          <span> What I achieved </span>
+
+          <p>
+            I contributed to capture, recording, replay, telemetry, and
+            validation workflows for high-rate RF data while maintaining data
+            integrity under sustained workloads.
+          </p>
+        </div>
+      </div>
+
+      <div class="research-stats">
+        <div class="research-stat">
+          <strong>4×</strong>
+          <span>SDR front ends</span>
+        </div>
+
+        <div class="research-stat">
+          <strong>100 Gbps</strong>
+          <span>class data path</span>
+        </div>
+
+        <div class="research-stat">
+          <strong>0</strong>
+          <span>observed packet drops in validated runs</span>
+        </div>
+      </div>
+
+      <a
+        href="{{ '/portfolio/satellite-telemetry-daq' | relative_url }}"
+        class="research-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Project Details
+      </a>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       03 / FPGA & VLSI
+  ====================================================== -->
+
+  <section class="research-story-section">
+    <div class="research-story-label">03 / FPGA &amp; VLSI</div>
+
+    <div class="research-story-content">
+      <h2>Understanding what happens inside the hardware</h2>
+
+      <p class="research-question">
+        How is high-speed data kept correct inside the hardware itself?
+      </p>
+
+      <div class="research-story-image">
+        <img
+          src="{{ '/images/systems/fpga-board-example.jpg' | relative_url }}"
+          alt="Example FPGA hardware platform"
+        />
+
+        <p class="research-image-caption">
+          Example FPGA platform illustrating high-speed digital processing
+          hardware
+        </p>
+      </div>
+
+      <div class="research-answer-grid">
+        <div class="research-answer-card">
+          <span> What I explored </span>
+
+          <p>
+            I moved deeper into RTL design, FIFO and FSM logic, RISC-V
+            architecture, and cycle-accurate hardware verification.
+          </p>
+        </div>
+
+        <div class="research-answer-card">
+          <span> What I built </span>
+
+          <p>
+            I designed and verified reusable digital blocks and a 3-stage RISC-V
+            pipeline with hazard handling, forwarding, branch control, and
+            automated Cocotb regression testing.
+          </p>
+        </div>
+      </div>
+
+      <div class="research-tags">
+        <span>Verilog</span>
+        <span>RISC-V</span>
+        <span>FIFO / FSM</span>
+        <span>Cocotb</span>
+        <span>Hardware Verification</span>
+      </div>
+
+      <a
+        href="{{ '/projects/' | relative_url }}"
+        class="research-button"
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        Explore VLSI Projects
+      </a>
+    </div>
+  </section>
+
+  <!-- =====================================================
+       04 / FUTURE RESEARCH
+  ====================================================== -->
+
+  <section class="research-story-section">
+    <div class="research-story-label">04 / Future Research</div>
+
+    <div class="research-story-content">
+      <div class="future-research-card">
+        <h2>Intelligent RF signal analysis</h2>
+
+        <p class="research-question">
+          Can a communication system not only capture RF signals, but also
+          understand what is happening inside them?
+        </p>
+
+        <div class="research-answer-grid">
+          <div class="research-answer-card">
+            <span> What I want to investigate </span>
+
+            <p>
+              I want to combine real RF measurements, wireless channel analysis,
+              AI-based anomaly detection, and FPGA acceleration to identify
+              unusual signal behavior and changing fading conditions.
+            </p>
+          </div>
+
+          <div class="research-answer-card">
+            <span> Why it matters </span>
+
+            <p>
+              This could move intelligent analysis closer to the hardware and
+              help high-speed communication systems detect important signal
+              behavior more efficiently.
+            </p>
+          </div>
+        </div>
+
+        <p class="future-study-goal">
+          My goal is to pursue an <strong>M.Sc.</strong> and eventually a
+          <strong>Ph.D.</strong> to develop this research direction more deeply.
+        </p>
+      </div>
+    </div>
+  </section>
+</div>

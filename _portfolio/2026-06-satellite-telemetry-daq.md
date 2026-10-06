@@ -8,11 +8,7 @@ classes: wide
 excerpt: "Scalable line-rate satellite data acquisition platform supporting MIMO and Ultra-Wideband profiles (up to 4 GHz) with DPDK zero-copy capture, primary/secondary IPC, and record-playback anomaly validation."
 ---
 
-<div style="margin: 15px 0 30px 0; display: flex; flex-wrap: wrap; gap: 12px;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/intro" target="_blank" rel="noopener noreferrer" class="btn btn--primary" style="padding: 10px 18px; font-weight: 600; text-decoration: none; border-radius: 6px;">
-    <i class="fas fa-external-link-alt"></i> Open Full Interactive Documentation & Code Walkthrough
-  </a>
-</div>
+
 
 ## Master System Architecture
 
@@ -49,11 +45,7 @@ The front-end acquisition layer digitizes wideband satellite RF downlinks and en
   * **Wideband (2-CH):** 2 channels @ 1.4756 GHz (**2.951 GHz** aggregate).
   * **Wideband (4-CH):** 4 channels @ 1.4756 GHz (**5.902 GHz** aggregate).
 
-<div style="margin: 10px 0 25px 0;">
-  <a href="https://YOUR_EXTERNAL_DOCS_URL_HERE/part1-fpga" target="_blank" rel="noopener noreferrer" style="font-weight: 600; font-size: 0.9em; text-decoration: none;">
-    → Read Part 1 Detailed Technical Notes: Flex Compute Framing & Channel Specs
-  </a>
-</div>
+
 
 ---
 
@@ -73,11 +65,7 @@ Capture routines can be initiated synchronously via physical line transitions or
 * **VISA / SCPI Protocol Bridge:** Translates incoming client Remote Procedure Calls into standard SCPI instructions over TCP/IP sockets to automate RF center frequencies, receiver gains, and recording schedules.
 * **Connection Resiliency:** Implemented state-machine reconnection handling, socket write locks to resolve thread contention, and strict CRLF delimiter parsing for message transport.
 
-<div style="margin: 10px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/LabVIEW-gRPC-VISA/introduction" target="_blank" rel="noopener noreferrer" style="font-weight: 600; font-size: 0.9em; text-decoration: none;">
-    → Read Part 2 Detailed Technical Notes: LabVIEW VIs, SCPI Commands & Socket Traces
-  </a>
-</div>
+
 
 ---
 
@@ -101,11 +89,7 @@ The server software runs a decoupled primary/secondary process model in C to pro
 * **Hardware-Level Node Licensing:**
   * Validates hardware cryptographic signatures (NIC MAC address and platform hardware IDs) before binding the DPDK Environment Abstraction Layer (EAL).
 
-<div style="margin: 10px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/Secondary-gRPC/introduction" target="_blank" rel="noopener noreferrer" style="font-weight: 600; font-size: 0.9em; text-decoration: none;">
-    → Read Part 3 Detailed Technical Notes: DPDK EAL Initialization, Seqlocks & Buffer Pools
-  </a>
-</div>
+
 
 ---
 
@@ -125,11 +109,7 @@ Raw hardware counters are converted into a cloud-native monitoring stream withou
 * **Custom Prometheus Exporter:** Regularly scrapes the UNIX domain socket and converts raw metrics into standard Prometheus exposition format over HTTP.
 * **Grafana Visualization:** Live dashboards plot packet arrival rates, buffer pool fill percentages, queue backpressures, and thread latency profiles.
 
-<div style="margin: 10px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/Grafana-Prometheus/Introduction" target="_blank" rel="noopener noreferrer" style="font-weight: 600; font-size: 0.9em; text-decoration: none;">
-    → Read Part 4 Detailed Technical Notes: Exporter Setup & Grafana Dashboard Panels
-  </a>
-</div>
+
 
 ---
 
@@ -160,14 +140,7 @@ Operators configure and monitor captures through interactive user interfaces, va
 | **Stress Run 2** | Unlimited | 788,060,948 | 1.60 min | **0** | Verified Line Rate |
 | **Peak Endurance Run** | Unlimited | **859,314,436** | 1.72 min | **0** | Verified Line Rate |
 
-<div style="margin: 10px 0 25px 0;">
-  <a href="https://ronok-6-g-research-portfolio.vercel.app/docs/Grafana-Prometheus/Introduction"
-     target="_blank"
-     rel="noopener noreferrer"
-     style="font-weight: 600; font-size: 0.9em; text-decoration: none;">
-    → Read Part 5 Detailed Technical Notes: Intel VTune Profiling, Terminal Logs & Verification Evidence
-  </a>
-</div>
+
 
 ---
 
