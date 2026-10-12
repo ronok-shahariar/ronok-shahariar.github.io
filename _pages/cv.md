@@ -705,21 +705,21 @@ Rajshahi University of Engineering & Technology (RUET)
 
 **Research Areas:** Wireless Communication, Physical-Layer Security, Wireless Network Modeling
 
-### Md. Robiul Islam
+### Fariya Tabassum
 
 Assistant Professor  
 Department of ECE  
 Rajshahi University of Engineering & Technology (RUET)
 
-**Email:** `robiul@ece.ruet.ac.bd`  
+**Email:** `fariya@ece.ruet.ac.bd`  
 **Relationship:** Academic Instructor 
 
-**Research Areas:** Embedded Systems, Digital Systems, Signal Processing
+**Research Areas:** Power Station, Switchgear and Protection; and Control Systems
 
 ---
 
 
-# Other Portfolios
+# Other Experiences
 
 <div style="
   display:flex;
