@@ -1125,18 +1125,6 @@ layout: default
   <!-- TECH -->
 
   <!-- =========================================================
-     01 / UNDERGRADUATE RESEARCH
-========================================================= -->
-
-  <!-- =========================================================
-     CAREER / RESEARCH JOURNEY TRANSITION
-========================================================= -->
-
-  <!-- =========================================================
-     RESEARCH & ENGINEERING JOURNEY
-========================================================= -->
-
-  <!-- =========================================================
      CO-CURRICULAR ACTIVITIES & ACHIEVEMENTS
 ========================================================= -->
 
@@ -1253,6 +1241,9 @@ layout: default
     </div>
   </section>
 
+  <!-- =========================================================
+     RESEARCH & ENGINEERING JOURNEY
+========================================================= -->
   <section
     class="portfolio-section compact-research-journey"
     id="research-engineering-journey"
@@ -1393,8 +1384,8 @@ layout: default
           <div class="journey-story-layout">
             <div class="journey-story-image">
               <img
-                src="{{ '/images/systems/fpga-board-example.jpg' | relative_url }}"
-                alt="Example FPGA hardware platform"
+                src="{{ '/images/riscv-accelerator/fpga.jpg' | relative_url }}"
+                alt="ALINX AX7203 Artix-7 FPGA Hardware Deployment"
               />
             </div>
 
@@ -1402,16 +1393,30 @@ layout: default
               <h3>Going deeper into the hardware and the signal</h3>
 
               <p>
-                Working closely with FPGA data paths developed my interest in
-                VLSI, RTL design, RISC-V, and hardware verification. It also
-                raised a new question for me: how can the captured RF data be
-                understood more intelligently?
+                My path started with a deep look into wireless channel security
+                and fading during my undergraduate thesis. But when I
+                transitioned to high-speed satellite RF data systems at
+                Siliconova, I saw firsthand how harsh real-world environments
+                can trigger physical vulnerabilities like transient bit flips.
+                That practical challenge inspired me to build something robust
+                from the ground up: a custom
+                <a
+                  href="{{ '/portfolio/riscv-resilient-ai-accelerator/' | relative_url }}"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  RISC-V-Based Fault-Resilient INT8 AI Accelerator
+                </a>
+                built around a PicoRV32 soft-core and a fault-resilient MAC
+                datapath on an Artix-7 FPGA, featuring runtime SEU fault
+                injection and dynamic saturation clamping.
               </p>
 
               <p class="journey-highlight">
-                My future research interest is to combine wireless channel
-                analysis, real RF measurements, AI-based anomaly detection, and
-                FPGA hardware acceleration.
+                Looking ahead, this entire journey ties directly into my
+                ultimate research goal: combining wireless channel analysis,
+                real-world RF measurements, AI-based anomaly detection, and
+                fault-tolerant FPGA hardware acceleration.
               </p>
             </div>
           </div>
@@ -1424,8 +1429,9 @@ layout: default
         <div class="journey-research-goal">
           <p>
             I want to study how AI can detect signal anomalies and changing
-            fading conditions from real RF measurements, while FPGA acceleration
-            enables faster processing closer to the hardware.
+            fading conditions from real RF measurements, while fault-resilient
+            FPGA acceleration ensures reliable, high-speed processing closer to
+            the hardware.
           </p>
         </div>
 

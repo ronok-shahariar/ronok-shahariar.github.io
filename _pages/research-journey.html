@@ -512,60 +512,73 @@ permalink: /research-journey/
     <div class="research-story-label">03 / FPGA &amp; VLSI</div>
 
     <div class="research-story-content">
-      <h2>Understanding what happens inside the hardware</h2>
+      <h2>Fault-Resilient RISC-V SoC &amp; AI Acceleration</h2>
 
       <p class="research-question">
-        How is high-speed data kept correct inside the hardware itself?
+        How can we ensure reliable execution and fault resilience in hardware accelerators under abnormal operating conditions?
       </p>
 
       <div class="research-story-image">
         <img
-          src="{{ '/images/systems/fpga-board-example.jpg' | relative_url }}"
-          alt="Example FPGA hardware platform"
+          src="{{ '/images/riscv-accelerator/fpga.jpg' | relative_url }}"
+          alt="ALINX AX7203 Artix-7 FPGA Hardware Deployment"
         />
 
         <p class="research-image-caption">
-          Example FPGA platform illustrating high-speed digital processing
-          hardware
+          ALINX AX7203 Artix-7 FPGA deployment verifying the fault-resilient RISC-V accelerator
         </p>
       </div>
 
       <div class="research-answer-grid">
         <div class="research-answer-card">
-          <span> What I explored </span>
+          <span> What I designed </span>
 
           <p>
-            I moved deeper into RTL design, FIFO and FSM logic, RISC-V
-            architecture, and cycle-accurate hardware verification.
+            I implemented a custom SoC centered around a PicoRV32 soft-core and a signed INT8 MAC co-processor targeting an Artix-7 FPGA, featuring runtime SEU fault injection and dynamic saturation clamping.
           </p>
         </div>
 
         <div class="research-answer-card">
-          <span> What I built </span>
+          <span> What I achieved </span>
 
           <p>
-            I designed and verified reusable digital blocks and a 3-stage RISC-V
-            pipeline with hazard handling, forwarding, branch control, and
-            automated Cocotb regression testing.
+            Achieved exceptional resource efficiency (<1% logic usage) and validated the design through exhaustive simulation of 65,536 signed activation-weight pairs and hardware-in-the-loop testing.
           </p>
         </div>
       </div>
 
+      <div class="research-stats">
+        <div class="research-stat">
+          <strong>65,536</strong>
+          <span>Exhaustive simulation pairs</span>
+        </div>
+
+        <div class="research-stat">
+          <strong>&lt; 1%</strong>
+          <span>Logic resource usage</span>
+        </div>
+
+        <div class="research-stat">
+          <strong>7 / 7</strong>
+          <span>Passed regression suites</span>
+        </div>
+      </div>
+
       <div class="research-tags">
-        <span>Verilog</span>
         <span>RISC-V</span>
-        <span>FIFO / FSM</span>
-        <span>Cocotb</span>
-        <span>Hardware Verification</span>
+        <span>PicoRV32</span>
+        <span>Artix-7 FPGA</span>
+        <span>SEU Fault Injection</span>
+        <span>INT8 MAC</span>
       </div>
 
       <a
-        href="{{ '/vlsi-projects/' | relative_url }}"
+        href="{{ '/portfolio/riscv-resilient-ai-accelerator/' | relative_url }}"
         class="research-button"
         target="_blank"
         rel="noopener noreferrer"
       >
-        Explore VLSI Projects
+        Explore Accelerator Project
       </a>
     </div>
   </section>
@@ -592,7 +605,7 @@ permalink: /research-journey/
 
             <p>
               I want to combine real RF measurements, wireless channel analysis,
-              AI-based anomaly detection, and FPGA acceleration to identify
+              AI-based anomaly detection, and fault-resilient FPGA acceleration to identify
               unusual signal behavior and changing fading conditions.
             </p>
           </div>
@@ -603,7 +616,7 @@ permalink: /research-journey/
             <p>
               This could move intelligent analysis closer to the hardware and
               help high-speed communication systems detect important signal
-              behavior more efficiently.
+              behavior more efficiently and reliably.
             </p>
           </div>
         </div>
